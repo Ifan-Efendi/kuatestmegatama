@@ -2,15 +2,9 @@
   "main": [
     {
       "enable": true,
-      "label": "facebook",
-      "icon": "/images/icons/facebook.svg",
-      "url": "https://www.facebook.com"
-    },
-    {
-      "enable": true,
-      "label": "twitter",
-      "icon": "/images/icons/twitter.svg",
-      "url": "https://twitter.com"
+      "label": "tiktok",
+      "icon": "/images/icons/tiktok.svg",
+      "url": "https://www.tiktok.com"
     },
     {
       "enable": true,
@@ -20,9 +14,15 @@
     },
     {
       "enable": true,
-      "label": "linkedin",
-      "icon": "/images/icons/linkedin.svg",
-      "url": "https://www.linkedin.com"
+      "label": "facebook",
+      "icon": "/images/icons/facebook.svg",
+      "url": "https://www.facebook.com"
+    },
+    {
+      "enable": true,
+      "label": "youtube",
+      "icon": "/images/icons/youtube.svg",
+      "url": "https://www.youtube.com"
     }
   ]
 }

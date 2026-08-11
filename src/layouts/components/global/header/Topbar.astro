@@ -13,11 +13,14 @@ interface Props {
   size?: "default" | "compact";
 }
 
-const {
-  settings: {
-    contactInfo: { officeHours, phone, email, address },
-  },
-} = config;
+const contactInfo = config.settings.contactInfo as {
+  officeHours?: string;
+  phone: string;
+  phone2?: string;
+  email: string;
+  address: string;
+};
+const { officeHours, phone, phone2, email, address } = contactInfo;
 
 let { layout, leftContent = ["office-hours"], size = "default" } = Astro.props;
 
@@ -57,9 +60,16 @@ const sizeClass = size === "compact" ? "py-3 text-sm" : "py-4 text-sm";
     <div
       class="flex flex-wrap items-center justify-center gap-4 md:justify-between md:gap-10">
       <div class="flex items-center gap-2 hover:underline">
-        <DynamicIcon name="Phone" class="size-4 shrink-0" />
+        <DynamicIcon name="whatsapp" class="size-4 shrink-0" />
         <span set:html={markdownify(phone)} />
       </div>
+
+      {phone2 && (
+        <div class="flex items-center gap-2 hover:underline">
+          <DynamicIcon name="whatsapp" class="size-4 shrink-0" />
+          <span set:html={markdownify(phone2)} />
+        </div>
+      )}
 
       <div class="flex items-center gap-2 hover:underline">
         <DynamicIcon name="Mail" class="size-4 shrink-0" />

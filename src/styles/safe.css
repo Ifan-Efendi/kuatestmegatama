@@ -29,27 +29,34 @@ form.contact-form {
 }
 
 .contact-form-field-label {
-  @apply text-dark/70 mb-4 text-base font-medium;
+  @apply text-dark mb-2 text-sm font-semibold;
 }
 
 .contact-form-control-shell {
-  @apply border-border-dark/20 relative w-full border-b transition-colors duration-200;
+  @apply relative w-full;
+}
+
+.contact-form-field:focus-within .contact-form-control,
+.contact-form-field.is-filled .contact-form-control {
+  @apply border-primary;
+}
+
+.contact-form-field.is-error .contact-form-control {
+  @apply border-red-500;
 }
 
 .contact-form-field:focus-within .contact-form-control-shell,
 .contact-form-field.is-filled .contact-form-control-shell,
 .contact-form-field:focus-within .contact-form-choice-group,
 .contact-form-field.is-filled .contact-form-choice-group {
-  @apply border-primary;
 }
 
 .contact-form-field.is-error .contact-form-control-shell,
 .contact-form-field.is-error .contact-form-choice-group {
-  @apply border-red-500;
 }
 
 .contact-form-control {
-  @apply text-dark placeholder:text-text-default/70 w-full border-none bg-transparent px-0 pt-2 pb-4 ring-0 outline-none focus:ring-0 focus:outline-none;
+  @apply text-dark placeholder:text-text-default/50 border-border-light focus:border-primary w-full rounded-lg border bg-white px-4 py-3 ring-0 outline-none transition-colors duration-200 focus:ring-0 focus:outline-none;
   caret-color: var(--color-dark);
 }
 
@@ -99,7 +106,7 @@ form.contact-form {
 }
 
 .contact-form-select-toggle {
-  @apply text-dark relative flex w-full cursor-pointer items-center gap-x-2 border-none bg-transparent px-0 pt-2 pb-4 text-left shadow-none ring-0 outline-none focus:ring-0 focus:outline-none;
+  @apply text-dark border-border-light focus:border-primary relative flex w-full cursor-pointer items-center gap-x-2 rounded-lg border bg-white px-4 py-3 text-left shadow-none ring-0 outline-none transition-colors duration-200 focus:ring-0 focus:outline-none;
 }
 
 .contact-form-select-title {
@@ -133,7 +140,7 @@ form.contact-form {
 }
 
 .contact-form-select-arrow {
-  @apply text-text-default/70 pointer-events-none absolute inset-y-0 right-0 flex items-center transition-colors;
+  @apply text-text-default/70 pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 transition-colors;
 }
 
 .contact-form-select-search-wrap {

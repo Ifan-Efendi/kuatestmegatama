@@ -11,7 +11,7 @@ import { useTranslations } from "@/lib/utils/i18nUtils.ts";
 const {
   settings: {
     headerOffcanvas: { enable, logo, description },
-    contactInfo: { address, phone, email },
+    contactInfo: { address, phone, phone2, email },
   },
 } = config;
 
@@ -106,8 +106,9 @@ if (!enable) {
           />
         )
       }
-      <div class="prose-a:underline">
+      <div class="space-y-1 prose-a:underline">
         {phone && <p set:html={markdownify(phone)} />}
+        {phone2 && <p set:html={markdownify(phone2)} />}
         {email && <p set:html={markdownify(email)} />}
       </div>
     </div>

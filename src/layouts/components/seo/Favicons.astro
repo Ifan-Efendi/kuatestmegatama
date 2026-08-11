@@ -1,6 +1,7 @@
 ---
 import config from ".astro/config.generated.json";
 let faviconPath = "/images/favicons";
+let faviconImage = "/images/favicons/KUATEST LOGO.png";
 
 const favicons: {
   rel: string;
@@ -12,25 +13,25 @@ const favicons: {
   {
     rel: "apple-touch-icon",
     sizes: "180x180",
-    href: `${faviconPath}/apple-touch-icon.png`,
+    href: faviconImage,
   },
   {
     rel: "icon",
     type: "image/png",
     sizes: "96x96",
-    href: `${faviconPath}/favicon-96x96.png`,
+    href: faviconImage,
   },
   {
     rel: "icon",
     type: "image/png",
     sizes: "192x192",
-    href: `${faviconPath}/web-app-manifest-192x192.png`,
+    href: faviconImage,
   },
   {
     rel: "icon",
     type: "image/png",
     sizes: "512x512",
-    href: `${faviconPath}/web-app-manifest-512x512.png`,
+    href: faviconImage,
   },
   {
     rel: "icon",

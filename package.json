@@ -6,7 +6,7 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "dev": "npm run toml:watch -- --watch & astro dev",
+    "dev": "astro dev",
     "astro": "astro",
     "toml:watch": "node scripts/toml-watcher.mjs",
     "build": "npm run toml:watch && astro build && npm run remove-draft-from-sitemap",
@@ -16,8 +16,7 @@
     "generate-multilingual-content": "node ./scripts/generate-multilingual-content.mjs",
     "remove-multilingual": "node ./scripts/remove-multilingual.mjs",
     "remove-draft-from-sitemap": "node ./scripts/remove-draft-from-sitemap.mjs",
-    "format": "prettier -w ./src",
-    "deploy:cf": "wrangler pages deploy"
+    "format": "prettier -w ./src"
   },
   "engines": {
     "node": ">=22.12.0"
@@ -48,7 +47,7 @@
     "@tailwindcss/forms": "^0.5.11",
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.1",
-    "astro": "^7.0.2",
+    "astro": "^7.2.0",
     "astro-font": "^1.1.0",
     "gray-matter": "^4.0.3",
     "ignore": "^7.0.5",

@@ -173,6 +173,10 @@
     @apply hs-dropdown-open:text-white hs-dropdown-open:bg-white/10 text-white hover:bg-white/10!;
   }
 
+  .logo-wrapper .logo {
+    @apply brightness-100;
+  }
+
   .logo-wrapper .logo-text {
     @apply text-white;
   }
@@ -256,14 +260,14 @@ header.has-dark-background .navbar .badge {
 
 /* Logo */
 .logo-wrapper {
-  @apply flex items-center gap-2;
+  @apply flex items-center gap-2 pl-2;
 
   .logo {
     @apply flex items-center gap-x-4;
   }
 
   .logo-text {
-    @apply font-semibold tracking-wider sm:text-3xl;
+    @apply font-bold tracking-widest text-xl sm:text-2xl uppercase;
   }
 
   .logo-alternate {
@@ -274,7 +278,7 @@ header.has-dark-background .navbar .badge {
 /* Hide alternate logo */
 header {
   .logo {
-    @apply hidden;
+    @apply brightness-0;
   }
 
   .logo-text {
@@ -284,7 +288,7 @@ header {
   /* Show main logo in home page and alternate logo in other pages */
   &.header-dark {
     .logo {
-      @apply inline-block;
+      @apply brightness-100;
     }
 
     .logo-text {
@@ -299,8 +303,11 @@ header {
 
 /* Show main logo in footer */
 footer {
+  .logo {
+    @apply brightness-0;
+  }
   .logo-text {
-    @apply text-h4 text-dark;
+    @apply text-dark;
   }
 
   .logo-alternate {
@@ -309,6 +316,10 @@ footer {
 
   &.footer-dark {
     @apply bg-theme-dark text-light;
+
+    .logo {
+      @apply brightness-0 invert;
+    }
 
     .logo-alternate {
       @apply inline-block!;
@@ -330,9 +341,7 @@ footer {
       @apply hover:text-white!;
     }
 
-    .footer-bottom {
-      @apply border-border-dark!;
-    }
+    .footer-bottom {}
 
     .footer-social a {
       @apply hover:bg-primary! bg-white/10! text-white!;
@@ -341,6 +350,9 @@ footer {
 }
 
 .header.has-dark-background .logo-wrapper {
+  .logo {
+    @apply brightness-100;
+  }
   .logo-text {
     @apply text-white;
   }

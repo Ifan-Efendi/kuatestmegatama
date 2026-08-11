@@ -7,6 +7,7 @@ import TeamSingle from "@/components/TeamSingle.astro";
 import extractSlug from "@/lib/utils/extractSlug";
 import config from ".astro/config.generated.json";
 import PageHeader from "@/components/widgets/PageHeader.astro";
+import RelatedProducts from "@/components/widgets/RelatedProducts.astro";
 
 export async function getStaticPaths() {
   const paths = await Promise.all(
@@ -47,4 +48,9 @@ const { team } = Astro.props;
 <Base {...team.data} fitToScreen={false}>
   <PageHeader content={team.data} />
   <TeamSingle content={team} />
+  <section>
+    <div class="container">
+      <RelatedProducts currentProduct={team} />
+    </div>
+  </section>
 </Base>

@@ -97,6 +97,7 @@ export const teamCollection = defineCollection({
         }),
       )
       .optional(),
+    categories: z.array(z.string()).optional(),
   }),
 });
 

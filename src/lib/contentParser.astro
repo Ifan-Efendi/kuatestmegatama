@@ -15,12 +15,12 @@ export const getCollectionCTM = async <C extends CollectionKey>(
 
   const selectedLanguageCode = lang || defaultLanguage;
 
-  const language = languages.find(
+  let language = languages.find(
     (l: any) => l.languageCode == selectedLanguageCode,
   );
 
   if (!language) {
-    throw new Error("Language not found");
+    language = languages[0];
   }
 
   const { contentDir } = language;
@@ -56,12 +56,12 @@ export const getEntryCTM = async <C extends CollectionKey>(
 
   const selectedLanguageCode = lang || defaultLanguage;
 
-  const language = languages.find(
+  let language = languages.find(
     (l) => l.languageCode === selectedLanguageCode,
   );
 
   if (!language) {
-    throw new Error(`Language '${selectedLanguageCode}' not found.`);
+    language = languages[0];
   }
 
   const contentDir = language.contentDir;

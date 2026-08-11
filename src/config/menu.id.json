@@ -1,0 +1,116 @@
+{
+  "header": [
+    {
+      "enable": true,
+      "name": "Home",
+      "url": "/"
+    },
+    {
+      "enable": true,
+      "name": "Tentang",
+      "url": "/tentang/"
+    },
+    {
+      "enable": true,
+      "name": "Produk",
+      "url": "/services/"
+    },
+    {
+      "enable": true,
+      "name": "Galeri",
+      "url": "/gallery/"
+    },
+    {
+      "enable": true,
+      "name": "Artikel",
+      "url": "/blog/"
+    },
+    {
+      "enable": true,
+      "name": "Kontak",
+      "url": "/#contact"
+    }
+  ],
+  "footer": [
+    {
+      "label": "Tautan Cepat",
+      "list": [
+        {
+          "enable": true,
+          "name": "Home",
+          "url": "/"
+        },
+        {
+          "enable": true,
+          "name": "Tentang Kami",
+          "url": "/tentang/"
+        },
+        {
+          "enable": true,
+          "name": "Produk",
+          "url": "/services/"
+        },
+        {
+          "enable": true,
+          "name": "Galeri",
+          "url": "/#gallery"
+        },
+        {
+          "enable": true,
+          "name": "Artikel",
+          "url": "/blog/"
+        },
+        {
+          "enable": true,
+          "name": "Kontak",
+          "url": "/#contact"
+        }
+      ]
+    },
+    {
+      "label": "Kategori Produk",
+      "list": [
+        {
+          "enable": true,
+          "name": "Alat Uji Tanah",
+          "url": "/services/"
+        },
+        {
+          "enable": true,
+          "name": "Alat Uji Beton",
+          "url": "/services/"
+        },
+        {
+          "enable": true,
+          "name": "Alat Uji Batuan",
+          "url": "/services/"
+        },
+        {
+          "enable": true,
+          "name": "Alat Uji Aspal",
+          "url": "/services/"
+        },
+        {
+          "enable": true,
+          "name": "Alat Uji Semen",
+          "url": "/services/"
+        },
+        {
+          "enable": true,
+          "name": "Alat Laboratorium Umum",
+          "url": "/services/"
+        }
+      ]
+    },
+    {
+      "label": "Alamat Kami",
+      "list": [
+        {
+          "enable": true,
+          "name": "Jl. Batujajar, Perumahan, Jl. Batujajar Regency Raya No.F5,<br/>Laksanamekar, Kec. Padalarang,<br/>Kabupaten Bandung Barat, Jawa Barat 40553",
+          "url": "https://maps.google.com/?q=PT+Kuatest+Mega+Tama+Jl.+Batujajar+Regency+Raya+No.F5+Padalarang+Bandung+Barat"
+        }
+      ]
+    }
+  ]
+}

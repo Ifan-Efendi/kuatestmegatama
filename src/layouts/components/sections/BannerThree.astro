@@ -35,13 +35,13 @@ const backgroundImage = mapImage || "/images/banner/map.svg";
           aria-hidden="true"
           loading="eager"
           fetchpriority="high"
-          class="banner-three-map has-no-interaction lg:translate-centered absolute z-10 w-255 opacity-7 max-lg:bottom-0 max-lg:left-0"
+          class="banner-three-map has-no-interaction lg:translate-centered absolute z-0 w-255 opacity-7 max-lg:bottom-0 max-lg:left-0"
         />
       )
     }
     {
       gradientBackgroundImage && (
-        <div class="banner-three-gradient has-no-interaction translate-centered absolute z-10 flex h-245 w-400">
+        <div class="banner-three-gradient has-no-interaction translate-centered absolute z-0 flex h-245 w-400">
           <OptimizedImage
             src={gradientBackgroundImage}
             alt="map"
@@ -58,7 +58,7 @@ const backgroundImage = mapImage || "/images/banner/map.svg";
       {
         title && (
           <h1
-            class="banner-three-title text-display-5 md:text-display-4 lg:text-display-3 xl:text-display-2 leading-tight text-white"
+            class="banner-three-title text-display-5 md:text-display-4 lg:text-display-3 xl:text-display-3 leading-tight text-white"
             set:html={markdownify(title)}
           />
         )
@@ -67,7 +67,7 @@ const backgroundImage = mapImage || "/images/banner/map.svg";
       {
         description && (
           <p
-            class="banner-three-description text-light mx-auto mt-5 max-w-4xl md:text-lg"
+            class="banner-three-description text-light mx-auto mt-5 max-w-4xl text-lg font-medium md:text-xl lg:text-2xl"
             set:html={markdownify(description)}
           />
         )

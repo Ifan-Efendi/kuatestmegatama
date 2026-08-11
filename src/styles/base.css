@@ -1,5 +1,6 @@
 html {
   @apply text-sm xl:text-base;
+  overflow-x: hidden;
 }
 
 html:not(.lenis) {

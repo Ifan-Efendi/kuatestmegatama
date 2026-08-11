@@ -1,38 +1,22 @@
 ---
-import path from "path";
-import Button from "../Button.astro";
-
-// Get project root (Astro always starts server in project root)
-const projectRoot = process.cwd();
-
-// Get project folder name
-const themeName = path.basename(projectRoot);
-
-// Remove `-lite` word from themeName since buy link should be for pro version
-const proThemeName = themeName.replace("-lite", "");
-const buyLink = `https://getastrothemes.com/astro-themes/${proThemeName}/?initiate-checkout=true`;
----
 
 <div
   id="action-buttons"
-  class="pointer-events-none fixed right-0 bottom-5 z-100 flex flex-col space-y-2 rounded-lg bg-white p-2 text-center opacity-0 transition-all duration-300 [&.scroll-down]:pointer-events-auto [&.scroll-down]:right-5 [&.scroll-down]:opacity-100">
-  <Button
-    url={buyLink}
+  class="pointer-events-none fixed right-0 bottom-5 z-100 flex flex-col items-center text-center opacity-0 transition-all duration-300 [&.scroll-down]:pointer-events-auto [&.scroll-down]:right-5 [&.scroll-down]:opacity-100">
+  <a
+    href="https://wa.me/6289534457316"
     target="_blank"
-    hoverEffect="text-flip"
-    label="Buy Pro Version"
-    data-cursor-label="Buy Pro Version"
-    data-cursor-type="button"
-  />
-  <Button
-    variant="outline"
-    url={`https://getastrothemes.com/astro-themes/${themeName}/`}
-    target="_blank"
-    hoverEffect="text-flip"
-    label="Download Now"
-    data-cursor-label="Download Now"
-    data-cursor-type="button"
-  />
+    rel="noopener noreferrer"
+    aria-label="WhatsApp"
+    title="WhatsApp"
+    class="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[#25D366] shadow-lg transition-transform duration-200 hover:scale-105 focus:scale-105 sm:h-20 sm:w-20">
+    <img
+      src="/images/icons/whatsapp.svg"
+      alt="WhatsApp"
+      width="48"
+      height="48"
+      class="h-8 w-8 sm:h-12 sm:w-12" />
+  </a>
 </div>
 
 <script>

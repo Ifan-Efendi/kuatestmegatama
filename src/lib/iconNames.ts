@@ -38,6 +38,7 @@ export const knownIconNames = [
   "Trophy",
   "Users",
   "UsersRound",
+  "WhatsApp",
   "X",
 ] as const;
 

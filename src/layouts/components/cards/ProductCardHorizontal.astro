@@ -1,0 +1,51 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { plainify, toSentenceCase } from "@/lib/utils/textConverter";
+import { getLocaleUrlCTM, useTranslations } from "@/lib/utils/i18nUtils.ts";
+import OptimizedImage from "@/components/utilities/OptimizedImage.astro";
+import extractSlug from "@/lib/utils/extractSlug";
+
+interface Props {
+  content: CollectionEntry<"team">;
+  class?: string;
+}
+
+const { content, class: className, ...rest } = Astro.props;
+const { title, image } = content.data;
+
+const t = await useTranslations(Astro.currentLocale as string);
+const slug = getLocaleUrlCTM(extractSlug(content), Astro.currentLocale, content.collection);
+---
+
+<article
+  class:list={["group relative flex items-center gap-4", className]}
+  {...rest}>
+  <div class="relative h-24 w-24 shrink-0 overflow-hidden rounded-xl">
+    {image && (
+      <OptimizedImage
+        src={image}
+        alt={title}
+        class="size-full object-cover transition duration-500 group-hover:scale-105"
+        width={160}
+        height={160}
+      />
+    )}
+    <a
+      href={slug}
+      class="absolute inset-0 z-30"
+      title={toSentenceCase(t("common.learnMoreAbout") + " " + title)}
+    />
+  </div>
+  <div class="flex flex-col gap-1">
+    {title && (
+      <h3 class="text-base">
+        <a
+          title={toSentenceCase(t("common.learnMoreAbout") + " " + title)}
+          class="stretched-link text-inherit"
+          href={slug}
+          set:html={plainify(title)}
+        />
+      </h3>
+    )}
+  </div>
+</article>

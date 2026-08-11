@@ -1,0 +1,46 @@
+---
+import { getCollectionCTM } from "@/lib/contentParser.astro";
+import { useTranslations } from "@/lib/utils/i18nUtils.ts";
+import Icons from "@/helpers/Icons.astro";
+
+const members = await getCollectionCTM("team", Astro.currentLocale);
+const t = await useTranslations(Astro.currentLocale as string);
+---
+
+<div class="border-border-light bg-theme-light rounded-2xl border p-7">
+  <h2 class="text-h5-sm md:text-h5 mb-5">Cari Produk</h2>
+  <form class="relative" id="product-search">
+    <input
+      name="search"
+      type="text"
+      placeholder="Cari produk..."
+      class="form-input w-full rounded-md border-none! bg-white! p-5! pe-16! placeholder:opacity-60!"
+    />
+    <button
+      type="submit"
+      class="has-icon-moving-animation text-primary absolute inset-y-0 inset-e-0 flex w-14 items-center justify-center bg-white">
+      <span class="sr-only">Cari</span>
+      <Icons class="size-5" icon="Search" />
+    </button>
+  </form>
+</div>
+
+<script>
+  const searchForm = document.getElementById("product-search");
+  searchForm?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const term = searchForm.querySelector("[name='search']")?.value?.trim().toLowerCase() || "";
+    const cards = document.querySelectorAll(".product-team-card");
+    cards.forEach((card) => {
+      const title = card.querySelector("[data-product-title]")?.textContent?.toLowerCase() || "";
+      card.classList.toggle("hidden", term !== "" && !title.includes(term));
+    });
+  });
+
+  searchForm?.querySelector("[name='search']")?.addEventListener("input", (e) => {
+    if ((e.target as HTMLInputElement).value.trim() === "") {
+      const cards = document.querySelectorAll(".product-team-card");
+      cards.forEach((card) => card.classList.remove("hidden"));
+    }
+  });
+</script>

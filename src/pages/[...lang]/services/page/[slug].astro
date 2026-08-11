@@ -1,0 +1,83 @@
+---
+import Base from "@/layouts/Base.astro";
+import { getCollectionCTM } from "@/lib/contentParser.astro";
+import { getEntryCTM } from "@/lib/contentParser.astro";
+import PageHeader from "@/components/widgets/PageHeader.astro";
+import ProductSidebar from "@/components/widgets/ProductSidebar.astro";
+import TeamCard from "@/components/cards/TeamCard.astro";
+import Pagination from "@/components/widgets/Pagination.astro";
+import { supportedLanguages } from "@/lib/utils/i18nUtils.ts";
+import config from ".astro/config.generated.json";
+
+export async function getStaticPaths() {
+  const paths = await Promise.all(
+    supportedLanguages.map(async (lang) => {
+      const { defaultLanguage, showDefaultLangInUrl } =
+        config.settings.multilingual;
+
+      const members = await getCollectionCTM("team", lang.languageCode);
+      const productPerPage =
+        Number(config.settings.pagination) || 8;
+      const totalPages = Math.ceil(members.length / productPerPage);
+      const paths = [];
+
+      for (let i = 1; i < totalPages; i++) {
+        paths.push({
+          params: { slug: (i + 1).toString() },
+        });
+      }
+
+      return paths.map((path) => ({
+        params: {
+          slug: path.params.slug,
+          lang:
+            lang.languageCode === defaultLanguage && !showDefaultLangInUrl
+              ? undefined
+              : lang.languageCode,
+        },
+        props: {
+          productPerPage,
+          members,
+        },
+      }));
+    }),
+  );
+
+  return paths.flat();
+}
+
+const { slug } = Astro.params;
+const currentPage = slug && !isNaN(Number(slug)) ? Number(slug) : 1;
+const { productPerPage } = Astro.props;
+let { members } = Astro.props;
+
+const indexOfLast = currentPage * productPerPage;
+const indexOfFirst = indexOfLast - productPerPage;
+const slicedMembers = members.slice(indexOfFirst, indexOfLast);
+const totalPages = Math.ceil(members.length / productPerPage);
+---
+
+<Base title="Our Product" metaDescription="Produk alat-alat sipil PT. Kuatest Mega Tama" fitToScreen={false}>
+  <PageHeader
+    content={{
+      title: "Our Product",
+      segmentLabels: { services: "Produk" },
+    }}
+  />
+  <section>
+    <div class="container">
+      <div class="grid grid-cols-1 gap-y-16 lg:grid-cols-12 lg:items-start lg:gap-x-8">
+        <div class="order-1 lg:col-span-8 lg:order-2">
+          <h2 class="text-center mb-10">Our Product Behind The Studio</h2>
+          <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" id="product-grid">
+            {slicedMembers.map((item, index) => (
+              <TeamCard content={item} />
+            ))}
+          </div>
+          <Pagination collection="services" currentPage={currentPage} totalPages={totalPages} />
+        </div>
+        <ProductSidebar />
+      </div>
+    </div>
+  </section>
+</Base>

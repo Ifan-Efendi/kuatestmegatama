@@ -83,7 +83,7 @@ const cursorAttrs = isButtonEnabled
         {title && <h3 class="max-w-64 text-xl text-white" set:html={title} />}
       </div>
 
-      {slugLocale && (
+      {slugLocale && collection !== "services" && (
         <a
           class="absolute inset-0 z-20 size-full"
           href={getLocaleUrlCTM(slugLocale, Astro.currentLocale)}
@@ -119,7 +119,7 @@ const cursorAttrs = isButtonEnabled
           />
         )}
 
-        {isButtonEnabled && (
+        {isButtonEnabled && collection !== "services" && (
           <Button
             url={button?.url || slugLocale}
             label={button?.label || t("common.learnMore")}
@@ -130,7 +130,7 @@ const cursorAttrs = isButtonEnabled
           />
         )}
 
-        {slugLocale && (
+        {slugLocale && collection !== "services" && (
           <a
             class="absolute inset-0 z-10 size-full"
             href={getLocaleUrlCTM(slugLocale, Astro.currentLocale)}

@@ -1,6 +1,8 @@
 ---
 import DynamicIcon from "@/helpers/DynamicIcon.astro";
 import ContactForm from "@/components/widgets/ContactForm.astro";
+import Social from "@/components/widgets/Social.astro";
+import social from "@/config/social.json";
 import type { z } from "astro/zod";
 import type { Section } from "@/types";
 import { markdownify } from "@/lib/utils/textConverter";
@@ -45,6 +47,7 @@ const {
 } = actualContent;
 
 const t = await useTranslations(Astro.currentLocale as string);
+const footerSocials = social.main.filter((item) => item.enable);
 const sharedForm = sharedContactContent?.form;
 const formTitle = formOverride?.title || sharedContactContent?.formTitle;
 const formDescription =
@@ -126,12 +129,24 @@ if (!hasContentSource || !enable || (!hasLeftContent && !hasFormPanelContent)) {
                     )}
                     {item.description && (
                       <p
-                        class="mt-2 [&_br]:block"
+                        class="mt-2 break-words [&_br]:block"
                         set:html={markdownify(item.description)}
                       />
                     )}
                   </div>
                 ))}
+                <div data-scroll-reveal="fade-up" data-scroll-reveal-delay={infoList.length * 120}>
+                  <span class="bg-dark flex size-12 items-center justify-center rounded-md text-white">
+                    <DynamicIcon name="ThumbsUp" class="size-6" />
+                  </span>
+                  <h3 class="text-h6 mt-5">Ikuti Sosmed Kami</h3>
+                  <div class="mt-3">
+                    <Social
+                      linkType="follow"
+                      list={footerSocials}
+                    />
+                  </div>
+                </div>
               </div>
             )}
 
@@ -160,7 +175,7 @@ if (!hasContentSource || !enable || (!hasLeftContent && !hasFormPanelContent)) {
             </div>
 
             {formContent && (
-              <ContactForm form={formContent} class="mt-9" hideLabels />
+              <ContactForm form={formContent} class="mt-9" />
             )}
           </div>
         )

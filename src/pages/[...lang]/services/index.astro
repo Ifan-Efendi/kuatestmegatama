@@ -1,30 +1,49 @@
 ---
 import Base from "@/layouts/Base.astro";
-import { getEntryCTM } from "@/lib/contentParser.astro";
 import handleDraftPage from "@/lib/utils/handleDraftPage";
 import { generatePaths } from "@/lib/utils/i18nUtils.ts";
+import { getCollectionCTM } from "@/lib/contentParser.astro";
 import PageHeader from "@/components/widgets/PageHeader.astro";
-import ServicesSection from "@/components/sections/ServicesSection.astro";
+import ProductSidebar from "@/components/widgets/ProductSidebar.astro";
+import TeamCard from "@/components/cards/TeamCard.astro";
+import Pagination from "@/components/widgets/Pagination.astro";
 import config from ".astro/config.generated.json";
-import WorkingProcessSection from "@/components/sections/WorkingProcessSection.astro";
 
 export function getStaticPaths() {
   return generatePaths();
 }
 
-const page = await getEntryCTM(
-  config.settings.servicesFolder as "services",
-  "-index",
-  Astro.currentLocale,
-);
-
-// Remove drafts pages in production
-const response = handleDraftPage(page?.data);
+const response = handleDraftPage();
 if (response) return response;
+
+const members = await getCollectionCTM("team", Astro.currentLocale);
+const productPerPage = Number(config.settings.pagination) || 8;
+const totalPages = Math.ceil(members.length / productPerPage);
+const currentPage = 1;
+const slicedMembers = members.slice(0, productPerPage);
 ---
 
-<Base {...page?.data} fitToScreen={false}>
-  <PageHeader content={page?.data} />
-  <WorkingProcessSection />
-  <ServicesSection content={page?.data.servicesSection} ignoreLimit />
+<Base title="Our Product" metaDescription="Produk alat-alat sipil PT. Kuatest Mega Tama" fitToScreen={false}>
+  <PageHeader
+    content={{
+      title: "Our Product",
+      segmentLabels: { services: "Produk" },
+    }}
+  />
+  <section>
+    <div class="container">
+      <div class="grid grid-cols-1 gap-y-16 lg:grid-cols-12 lg:items-start lg:gap-x-8">
+        <div class="order-1 lg:col-span-8 lg:order-2">
+          <h2 class="text-center mb-10">Our Product Behind The Studio</h2>
+          <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" id="product-grid">
+            {slicedMembers.map((item, index) => (
+              <TeamCard content={item} />
+            ))}
+          </div>
+          <Pagination collection="services" currentPage={currentPage} totalPages={totalPages} />
+        </div>
+        <ProductSidebar />
+      </div>
+    </div>
+  </section>
 </Base>

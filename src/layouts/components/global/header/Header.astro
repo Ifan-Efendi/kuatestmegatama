@@ -87,6 +87,9 @@ const navigationButton = { ...navBtnConfig, ...customNavigationButton };
 const hasDesktopActions = hasLanguageSwitcher || navigationButton.enable;
 const logoSrc = currentLayout.hasDarkAppearance ? logoAlternate : undefined;
 const accentAppearance = currentLayout.hasDarkAppearance ? "light" : "dark";
+const isHomepage =
+  Astro.url.pathname === "/" ||
+  Astro.url.pathname === `/${Astro.currentLocale}/`;
 ---
 
 <div
@@ -95,12 +98,16 @@ const accentAppearance = currentLayout.hasDarkAppearance ? "light" : "dark";
     { "has-sticky-behavior": stickyHeader },
     { fixed: position === "fixed" },
   ]}>
-  <Topbar
-    class="topbar"
-    layout={currentLayout.topbarLayout}
-    leftContent={currentLayout.topbarLeftContent}
-    size={currentLayout.topbarSize}
-  />
+  {
+    isHomepage && (
+      <Topbar
+        class="topbar"
+        layout={currentLayout.topbarLayout}
+        leftContent={currentLayout.topbarLeftContent}
+        size={currentLayout.topbarSize}
+      />
+    )
+  }
 
   <header
     class:list={[

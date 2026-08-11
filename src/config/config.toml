@@ -1,38 +1,40 @@
 # Site Configuration
 [site]
-  title            = "Techlo Lite" # Shared title for SEO and OpenGraph
-  description      = "Techlo Lite is a free IT solutions and services theme for managed IT services, cloud consulting, cybersecurity, software development, and digital transformation websites." # Shared description for SEO and OpenGraph
-  tagline          = "Free IT Solutions & Services Astro & Tailwind CSS Theme"
+  title            = "PT. Kuatest Mega Tama" # Shared title for SEO and OpenGraph
+  description      = "Mitra Terpercaya Sekaligus Vendor Pengadaan Alat Teknik Sipil Meliputi Alat Uji Tanah, Beton, Aspal, Batuan, Semen, dan Alat Laboratorium Umum." # Shared description for SEO and OpenGraph
+  tagline          = "Mitra Terpercaya Sekaligus Vendor Pengadaan Alat Teknik Sipil."
   taglineSeparator = "" # default is " - " 
-  baseUrl          = "https://techlo-lite-astro.pages.dev/" # Base URL for the site and used in OpenGraph meta tags.
-  logo             = "/images/logo.svg" # Path to the site's logo
+  baseUrl          = "" # Base URL for the site and used in OpenGraph meta tags.
+  logo             = "/images/favicons/KUATEST LOGO.png" # Path to the site's logo
   logoAlternate    = "" # Path to the site's logo
-  logoText         = "Techlo" # Text displayed next to the logo
-  logoWidth        = "24px" # Width of the logo
-  logoHeight       = "36px" # Height of the logo
+  logoText         = "KUATEST" # Text displayed next to the logo
+  logoWidth        = "auto" # Width of the logo
+  logoHeight       = "32px" # Height of the logo
 
-  # Add a trailing slash at the end of URLs (e.g., https://example.com/, https://example.com/contact/)˝
+# Add a trailing slash at the end of URLs (e.g., https://example.com/, https://example.com/contact/)Ã‹Â
   # Note: Manually restart your server when you change this value
   trailingSlash = true
 
   # Add your site logo in image path below and open your terminal and run "npm run generate-favicons" to generate favicons for different devices and platform (https://realfavicongenerator.net/checker)
   [site.favicon]
     path  = "/images/favicons" # favicon images path (No need to change it)
-    image = "/images/favicon.png" # Add your site logo path here and follow upper instruction
+    image = "/images/favicons/KUATEST LOGO.png" # Add your site logo path here and follow upper instruction
 
 
 # SEO Metadata
 # Specific SEO configurations that complement the general site settings.
 # -----------------------------------------------------------------------------------------------------------------------------------
 [seo]
-  author = "Getastrothemes"
+  author = "PT. Kuatest Mega Tama"
   keywords = [
-    "astro technology template",
-    "astro template",
-    "astro theme",
-    "free astro theme",
-    "it solution theme",
-    "technology astro theme",
+    "PT Kuatest Mega Tama",
+    "alat uji teknik sipil",
+    "alat uji tanah",
+    "alat uji beton",
+    "alat uji aspal",
+    "alat laboratorium umum",
+    "supplier alat teknik sipil",
+    "pengadaan alat laboratorium",
   ]
   robots = "index, follow" # Instructs search engines on how to crawl and index the pages.
 
@@ -61,7 +63,7 @@
 
   # docs - https://formspree.io/ | https://formsubmit.co/ | https://docs.netlify.com/forms/setup/
   # Form action URL for the contact form (For more settings related to form see "src/content/sections/contact-section.md")
-  contactFormAction = "https://formsubmit.co/temp.gats@gmail.com" # https://formspree.io/f/kweoweo | https://formsubmit.co/your@email.com | "/"
+  contactFormAction = "https://formsubmit.co/ptkuatestmegatama@gmail.com" # https://formspree.io/f/kweoweo | https://formsubmit.co/your@email.com | "/"
   # formspree | formsubmit.co | netlify (default is formsubmit.co)
   contactFormProvider = "formsubmit.co"
 
@@ -112,17 +114,18 @@
   [settings.multilingual]
     # Set `enable` to `true` for enabling the multilingual feature or `false` for disabling it.
     # Run `npm run remove-multilingual` for removing multilingual content files after disabling the feature.
-    enable               = true
-    defaultLanguage      = "en"
+    enable               = false
+    defaultLanguage      = "id"
     disableLanguages     = [""] # List of languages to disable (eg: ["fr", "es"])
     showDefaultLangInUrl = false # Show default language in URL (eg: https://getastrothemes.com/en/)
 
   # Global Contact Information
   [settings.contactInfo]
-    phone       = "[518-564-3200](tel:5185643200)"
-    email       = "[hello@example.com](mailto:hello@example.com)"
-    address     = "1791 Yorkshire Circle Kitty <br /> Hawk, NC 279499"
-    officeHours = "Office Hours: 8:00 AM – 10:00 PM"
+    phone       = "[62-811-2224-624](https://wa.me/628112224624)"
+    phone2      = "[62-895-3445-7316](https://wa.me/62895344573716)"
+    email       = "[ptkuatestmegatama@gmail.com](mailto:ptkuatestmegatama@gmail.com)"
+    address     = "Jl. Batujajar, Perumahan, Jl. Batujajar Regency Raya No.F5, Laksanamekar, Kec. Padalarang, Kabupaten Bandung Barat, Jawa Barat 40553"
+    officeHours = "Senin - Sabtu: 08:00 - 17:00 WIB"
 
   # Header Offcanvas Configuration
   # Update social links in `src/config/social.json`
@@ -156,7 +159,7 @@
 # -----------------------------------------------------------------------------------------------------------------------------------
 [opengraph]
   image       = "/images/og-image.jpg" # Image used in OpenGraph previews
-  ogLocale    = "en_US" # Locale setting for OpenGraph
+  ogLocale    = "id_ID" # Locale setting for OpenGraph
   ogType      = "website" # Type of content for OpenGraph protocol
   twitter     = "" # Twitter handle for Twitter Card meta tags
   twitterCard = "summary_large_image" # Type of Twitter Card to use in social sharing

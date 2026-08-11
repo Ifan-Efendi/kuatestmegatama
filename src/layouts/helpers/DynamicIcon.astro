@@ -40,13 +40,15 @@ if (!name) {
   return;
 }
 
-const isAsset = name.includes("/") || name.includes(".");
+// Redirect whatsapp icon to the actual WhatsApp SVG logo
+const resolvedName = name === "whatsapp" ? "/images/icons/whatsapp.svg" : name;
+const resolvedIsAsset = resolvedName.includes("/") || resolvedName.includes(".");
 ---
 
 {
-  isAsset ? (
-    <OptimizedImage src={name} {...rest} />
+  resolvedIsAsset ? (
+    <OptimizedImage src={resolvedName} {...rest} />
   ) : (
-    <Icons icon={name as SupportedIconName} {...rest} />
+    <Icons icon={resolvedName as SupportedIconName} {...rest} />
   )
 }

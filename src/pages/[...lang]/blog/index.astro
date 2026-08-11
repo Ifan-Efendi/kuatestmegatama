@@ -21,7 +21,9 @@ if (response) return response;
 ---
 
 <Base {...postIndex?.data} fitToScreen={false}>
-  <PageHeader content={postIndex?.data} />
+  <PageHeader
+    content={{ ...postIndex?.data, segmentLabels: { blog: "Artikel" } }}
+  />
   <BlogLayout
     pageType="list"
     contentList={{

@@ -9,10 +9,12 @@ type Props = {
     image?: string;
     breadcrumb?: boolean;
     hiddenPaths?: string[];
+    segmentLabels?: Record<string, string>;
   };
 };
 
-const { title, hiddenPaths, breadcrumb = true } = Astro.props.content || {};
+const { title, hiddenPaths, breadcrumb = true, segmentLabels = {} } =
+  Astro.props.content || {};
 const t = await useTranslations(Astro.currentLocale as string);
 
 const createBreadcrumbParts = (pathname: string) => {
@@ -37,8 +39,9 @@ const createBreadcrumbParts = (pathname: string) => {
   segments.forEach((segment, index) => {
     if (segment === "page") return;
 
-    const label =
+    const rawLabel =
       humanize(segment.replace(".html", "").replace(/[-_]/g, " ")) || "";
+    const label = segmentLabels[segment] || segmentLabels[rawLabel.toLowerCase()] || rawLabel;
     const href = getLocaleUrlCTM(
       `/${segments.slice(0, index + 1).join("/")}`,
       Astro.currentLocale,

@@ -401,14 +401,19 @@ const defaultErrorMessage = messageContent.error || formI18n.submissionFallback;
   {
     form.submitButton && (
       <div class="contact-form-submit">
-        <Button
-          tag="button"
-          type="submit"
+        <button
+          type="button"
           id="contact-submit"
-          hoverEffect="creative-fill"
-          class="text-base-sm effect-color-light w-fit md:text-base"
-          {...form.submitButton}
-        />
+          class="inline-flex w-full items-center justify-center gap-2 rounded-md bg-[#25D366] px-6 py-3 text-base font-medium text-white transition-transform duration-200 hover:scale-105">
+          <img
+            src="/images/icons/whatsapp.svg"
+            alt=""
+            width="22"
+            height="22"
+            class="h-5.5 w-5.5"
+            aria-hidden="true" />
+          <span>Kirim Pesan</span>
+        </button>
       </div>
     )
   }
@@ -472,191 +477,38 @@ const defaultErrorMessage = messageContent.error || formI18n.submissionFallback;
 
     form.dataset.contactFormReady = "true";
 
-    let selectTags = form.querySelectorAll(
-      "[input-wrapper]:not(.hidden) select[data-hs-select]",
-    ) as NodeListOf<HTMLSelectElement>;
+    const submitBtn = document.getElementById("contact-submit");
+    const waNumber = "628112224624";
 
-    const getFieldWrapper = (
-      target: string | Element | null | undefined,
-    ): HTMLElement | null => {
-      if (!target) return null;
+    submitBtn?.addEventListener("click", () => {
+      const nama = (form.querySelector("[name='Nama']") as HTMLInputElement)?.value?.trim() || "";
+      const perusahaan = (form.querySelector("[name='Perusahaan']") as HTMLInputElement)?.value?.trim() || "";
+      const alamat = (form.querySelector("[name='Alamat']") as HTMLTextAreaElement)?.value?.trim() || "";
+      const alat = (form.querySelector("[name='Alat']") as HTMLInputElement)?.value?.trim() || "";
+      const jumlah = (form.querySelector("[name='Jumlah']") as HTMLInputElement)?.value?.trim() || "";
+      const catatan = (form.querySelector("[name='Catatan']") as HTMLTextAreaElement)?.value?.trim() || "";
 
-      if (typeof target !== "string") {
-        return target.closest("[input-wrapper]");
-      }
-
-      const escapedName =
-        typeof CSS !== "undefined" && CSS.escape ? CSS.escape(target) : target;
-      return form.querySelector<HTMLElement>(
-        `[input-wrapper][data-field-name="${escapedName}"]`,
-      );
-    };
-
-    const markFieldFilled = (
-      target: string | Element | null | undefined,
-      filled: boolean,
-    ) => {
-      const field = getFieldWrapper(target);
-      if (!field) return;
-
-      field.classList.toggle("is-filled", filled);
-      if (filled) {
-        field.classList.remove("is-error");
-      }
-    };
-
-    const markFieldError = (target: string | Element | null | undefined) => {
-      const field = getFieldWrapper(target);
-      if (!field) return;
-
-      field.classList.add("is-error");
-      field.classList.remove("is-filled");
-    };
-
-    const clearFieldError = (target: string | Element | null | undefined) => {
-      getFieldWrapper(target)?.classList.remove("is-error");
-    };
-
-    const syncFieldValueState = (
-      element: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement,
-    ) => {
-      if (element instanceof HTMLSelectElement) {
-        markFieldFilled(element, element.value !== "");
+      if (!nama || !alamat || !alat) {
+        const msgEl = form.querySelector(".message.error") as HTMLElement;
+        if (msgEl) {
+          msgEl.classList.remove("hidden");
+          setTimeout(() => msgEl.classList.add("hidden"), 3000);
+        }
         return;
       }
 
-      if (element.type === "radio" || element.type === "checkbox") {
-        const checkedItems = form.querySelectorAll(
-          `[name="${element.name}"]:checked`,
-        );
-        markFieldFilled(element.name, checkedItems.length > 0);
-        return;
+      let teks = `*Pesanan Alat Teknik Sipil*%0A%0A` +
+        `*Nama*: ${encodeURIComponent(nama)}%0A` +
+        `*Perusahaan*: ${encodeURIComponent(perusahaan)}%0A` +
+        `*Alamat*: ${encodeURIComponent(alamat)}%0A` +
+        `*Nama Alat*: ${encodeURIComponent(alat)}%0A` +
+        `*Jumlah*: ${encodeURIComponent(jumlah)}`;
+      
+      if (catatan) {
+        teks += `%0A%0A*Catatan*: ${encodeURIComponent(catatan)}`;
       }
 
-      markFieldFilled(element, Boolean(element.value.trim()));
-    };
-
-    const syncSelectState = (items: HTMLSelectElement[]) => {
-      items.forEach((item) => {
-        const name = item.getAttribute("data-name");
-
-        if (name) {
-          item.setAttribute("name", name);
-        }
-
-        item.classList.toggle("hs-select-active", item.value !== "");
-        validateSelectTag(item);
-      });
-    };
-
-    const inputFields = form.querySelectorAll<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >("input[name], textarea[name], select[name], select[data-hs-select]");
-
-    inputFields.forEach((el) => {
-      const eventName =
-        el instanceof HTMLInputElement &&
-        (el.type === "checkbox" || el.type === "radio")
-          ? "change"
-          : "input";
-
-      el.addEventListener(eventName, () => {
-        syncFieldValueState(el);
-        clearFieldError(el);
-      });
-
-      if (eventName !== "change") {
-        el.addEventListener("change", () => {
-          syncFieldValueState(el);
-          clearFieldError(el);
-        });
-      }
-
-      syncFieldValueState(el);
-    });
-
-    syncSelectState(Array.from(selectTags));
-
-    selectTags.forEach((tag) => {
-      tag.addEventListener("change", () => {
-        syncSelectState(Array.from(selectTags));
-        clearFieldError(tag);
-      });
-    });
-
-    form.addEventListener(
-      "invalid",
-      (e) => {
-        const target = e.target;
-        if (
-          target instanceof HTMLInputElement ||
-          target instanceof HTMLTextAreaElement ||
-          target instanceof HTMLSelectElement
-        ) {
-          markFieldError(target);
-        }
-      },
-      true,
-    );
-
-    form.addEventListener("submit", async (e: Event) => {
-      e.preventDefault();
-
-      const provider = form.getAttribute("data-provider") || "";
-      const action = form.getAttribute("data-action") || "";
-      const submittingMessage = form.dataset.messageSubmitting || "";
-      const submissionFallbackMessage =
-        form.dataset.messageSubmissionFallback || "";
-      const unknownProviderMessage = form.dataset.messageUnknownProvider || "";
-
-      form
-        .querySelectorAll<HTMLElement>("[input-wrapper]")
-        .forEach((field) => field.classList.remove("is-error"));
-
-      selectTags = form.querySelectorAll(
-        "[input-wrapper]:not(.hidden) select[data-hs-select]",
-      ) as NodeListOf<HTMLSelectElement>;
-
-      syncSelectState(Array.from(selectTags));
-
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
-      }
-
-      if (isFormFilled(form)) {
-        setMessage(submittingMessage, "pending", true, form);
-
-        try {
-          switch (provider) {
-            case "netlify":
-              await netlifySubmit(form, action);
-              break;
-            case "formsubmit.co":
-              await formSubmit({
-                form,
-                action,
-              });
-              break;
-            case "formspree":
-              await formspreeSubmit(
-                Object.fromEntries(new FormData(form).entries()),
-                5000,
-                form,
-              );
-              break;
-            default:
-              throw new Error(unknownProviderMessage);
-          }
-        } catch (error) {
-          setMessage(
-            error + "! " + submissionFallbackMessage,
-            false,
-            false,
-            form,
-          );
-        }
-      }
+      window.open(`https://wa.me/${waNumber}?text=${teks}`, "_blank");
     });
   };
 

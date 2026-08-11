@@ -16,7 +16,7 @@ const t = await useTranslations(Astro.currentLocale as string);
 let {
   copyright,
   footerDescription,
-  contactInfo: { phone, email },
+  contactInfo: { phone, phone2, email },
 } = config.settings;
 
 footerDescription = footerDescription || t("footer.description") || "";
@@ -26,7 +26,7 @@ const copyrightText = splitProtectedText(
   copyright.text || t("footer.copyright") || "",
 ).join(" / ");
 
-const socialOrder = ["facebook", "linkedin", "twitter", "instagram"];
+const socialOrder = ["tiktok", "instagram", "facebook", "youtube"];
 const getSocialSortIndex = (label: string) => {
   const index = socialOrder.indexOf(label);
 
@@ -48,7 +48,7 @@ const footerSocials = social.main
     footerSpaceTop && "mt-16 lg:mt-20 xl:mt-24",
   ]}>
   <div class="container">
-    <div class="section-spacing-vertical">
+    <div class="section-spacing-top">
       <div class="grid gap-y-12 lg:grid-cols-12 lg:gap-x-8">
         <div class="lg:col-span-4">
           <Logo class="gap-1.5" />
@@ -60,20 +60,29 @@ const footerSocials = social.main
               />
             )
           }
-          <div class="mt-4 flex flex-wrap gap-4">
+          <div class="mt-4 flex flex-col gap-3">
             <div class="flex items-center gap-2 hover:underline">
               <svg
                 width="20"
                 height="20"
-                viewBox="0 0 20 20"
-                fill="none"
+                viewBox="0 0 24 24"
+                fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M16.625 17.5C14.8889 17.5 13.1701 17.125 11.4688 16.375C9.76736 15.625 8.22222 14.5556 6.83333 13.1667C5.44444 11.7778 4.375 10.2361 3.625 8.54167C2.875 6.84722 2.5 5.125 2.5 3.375V2.5H7.41667L8.1875 6.6875L5.8125 9.08333C6.11806 9.625 6.45833 10.1389 6.83333 10.625C7.20833 11.1111 7.61111 11.5625 8.04167 11.9792C8.44444 12.3819 8.88542 12.7674 9.36458 13.1354C9.84375 13.5035 10.3611 13.8472 10.9167 14.1667L13.3333 11.75L17.5 12.6042V17.5H16.625Z"
-                  fill="currentColor">
-                </path>
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
               </svg>
               <span set:html={markdownify(phone)} />
+            </div>
+
+            <div class="flex items-center gap-2 hover:underline">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              <span set:html={markdownify(phone2)} />
             </div>
 
             <div class="flex items-center gap-2 hover:underline">
@@ -88,7 +97,6 @@ const footerSocials = social.main
                   fill="currentColor">
                 </path>
               </svg>
-
               <span set:html={markdownify(email)} />
             </div>
           </div>
@@ -114,14 +122,18 @@ const footerSocials = social.main
                 <ul class="mt-5 flex flex-col gap-2.5">
                   {list.map((item) => (
                     <li>
-                      <a
-                        class:list={[
-                          "footer-link leading-body text-text-default hover:text-dark text-base transition duration-300 sm:whitespace-nowrap",
-                          item.active && "active text-dark",
-                        ]}
-                        href={getLocaleUrlCTM(item.url, Astro.currentLocale)}
-                        set:html={item.name}
-                      />
+                      {item.url ? (
+                        <a
+                          class:list={[
+                            "footer-link leading-body text-text-default hover:text-dark text-base transition duration-300 break-words",
+                            item.active && "active text-dark",
+                          ]}
+                          href={getLocaleUrlCTM(item.url, Astro.currentLocale)}
+                          set:html={item.name}
+                        />
+                      ) : (
+                        <span class="footer-link leading-body text-text-default text-base break-words" set:html={item.name} />
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -131,11 +143,11 @@ const footerSocials = social.main
         </nav>
       </div>
     </div>
-    <div class="footer-bottom border-t py-5 text-center">
+    <div class="footer-bottom py-4 text-center">
       {
         config.settings.copyright?.enable && (
           <p
-            class="footer-copyright leading-body text-text-default text-base"
+            class="footer-copyright text-text-default text-sm"
             set:html={markdownify(copyrightText)}
           />
         )

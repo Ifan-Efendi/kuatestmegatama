@@ -1,0 +1,33 @@
+---
+import { getCollectionCTM } from "@/lib/contentParser.astro";
+import ProductCardHorizontal from "../cards/ProductCardHorizontal.astro";
+
+interface Props {
+  currentProduct: any;
+}
+
+const { currentProduct } = Astro.props;
+const members = await getCollectionCTM("team", Astro.currentLocale);
+
+const currentCategories: string[] = currentProduct?.data?.categories || [];
+
+const related = members
+  .filter((m) => m.id !== currentProduct?.id)
+  .filter((m) =>
+    m.data.categories?.some((cat: string) => currentCategories.includes(cat)),
+  )
+  .slice(0, 3);
+---
+
+{
+  related && related.length > 0 && (
+    <div class="bg-theme-light rounded-2xl p-6 md:p-8 mt-10">
+      <h2 class="text-h5-sm md:text-h5 mb-6">Produk Terkait</h2>
+      <div class="space-y-6">
+        {related.map((product) => (
+          <ProductCardHorizontal content={product} />
+        ))}
+      </div>
+    </div>
+  )
+}

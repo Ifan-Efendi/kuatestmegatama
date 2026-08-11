@@ -1,0 +1,86 @@
+{
+  "common": {
+    "readMore": "Baca Selengkapnya",
+    "readBlog": "Baca Blog",
+    "viewDetails": "Lihat Detail",
+    "viewService": "Lihat Layanan",
+    "readMoreAbout": "Baca lebih lanjut tentang",
+    "learnMore": "Lihat Selengkapnya",
+    "learnMoreAbout": "Lihat selengkapnya tentang",
+    "emailPlaceholder": "Alamat Email",
+    "paginationPrevious": "Sebelumnya",
+    "paginationNext": "Selanjutnya",
+    "home": "Beranda",
+    "tab": "Tab"
+  },
+  "aria": {
+    "breadcrumb": "Jejak Lokasi",
+    "closeModal": "Tutup modal",
+    "closeOffcanvas": "Tutup sidebar",
+    "footer": "Footer",
+    "menu": "Menu",
+    "offcanvas": "Panel sidebar",
+    "openSidebarContent": "Buka isi sidebar",
+    "pagination": "Pagination",
+    "playVideo": "Putar video",
+    "services": "Layanan",
+    "starRating": "Penilaian 5 bintang",
+    "tabs": "Tab",
+    "toggleNavigation": "Alihkan navigasi"
+  },
+  "widgets": {
+    "searchTitle": "Cari",
+    "postSearchFormPlaceholder": "Cari wawasan, layanan, atau panduan...",
+    "searchInputPlaceholder": "Ketik untuk mencari...",
+    "categoriesTitle": "Kategori",
+    "tagsTitle": "Tag",
+    "recentPostsTitle": "Posting Terbaru"
+  },
+  "form": {
+    "choose": "Pilih",
+    "fallbackLabel": "Silakan atur label",
+    "fallbackName": "Silakan atur nilai nama",
+    "fallbackPlaceholder": "Silakan atur placeholder",
+    "invalidSelect": "Silakan pilih opsi yang valid.",
+    "sendMessage": "Kirim Pesan",
+    "validSelect": "Sempurna!",
+    "submitting": "Mengirim formulir...",
+    "unknownProvider": "Penyedia formulir tidak dikenal.",
+    "submissionFallback": "Silakan gunakan email kontak yang sudah dikonfigurasi untuk mengirim tiket."
+  },
+  "notFound": {
+    "title": "Halaman Tidak Ditemukan",
+    "heading": "Ups, halaman ini tidak ditemukan",
+    "description": "Halaman yang Anda cari tidak dapat ditemukan. Periksa kembali URL-nya, atau kembali ke beranda.",
+    "buttonLabel": "Kembali ke Beranda"
+  },
+  "headerOffcanvas": {
+    "description": "Mitra Terpercaya Sekaligus Vendor Pengadaan Alat Teknik Sipil Meliputi Alat Uji Tanah, Beton, Aspal, Batuan, Semen, dan Alat Laboratorium Umum.",
+    "addressLabel": "Alamat",
+    "contactLabel": "Kontak"
+  },
+  "blog": {
+    "authorPrefix": "Oleh",
+    "category": "Kategori",
+    "tagsLabel": "Tag:",
+    "share": "Bagikan:",
+    "paginationPrevious": "Posting Sebelumnya",
+    "paginationNext": "Posting Berikutnya"
+  },
+  "navigation": {
+    "buttonLabel": "Konsultasi"
+  },
+  "select": {
+    "loading": "Memuat...",
+    "noResults": "Tidak ada hasil ditemukan",
+    "searchPlaceholder": "Cari..."
+  },
+  "footer": {
+    "description": "Mitra Terpercaya Sekaligus Vendor Pengadaan Alat Teknik Sipil Meliputi Alat Uji Tanah, Beton, Aspal, Batuan, Semen, dan Alat Laboratorium Umum.",
+    "quickLinksTitle": "Tautan Cepat",
+    "servicesTitle": "Layanan",
+    "informationTitle": "Informasi",
+    "copyright": "Hak Cipta © 2026 PT. Kuatest Mega Tama. Semua hak dilindungi.",
+    "_comment": "Teks footer sesuai desain footer default. Perbarui nilai ini jika hak cipta produk berubah."
+  }
+}
