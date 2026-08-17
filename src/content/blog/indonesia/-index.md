@@ -7,6 +7,6 @@ draft: false
 # Settings of blog list page layout
 options:
   layout: "grid" # grid | creative | horizontal | overlay
-  columns: 2 # 1 / 2 / 3
+  columns: 4 # 1 / 2 / 3 / 4
   # Use `/blog/creative/` for the sidebar list layout shown in Blogs V2.
 ---

@@ -31,7 +31,7 @@ const isCreativeList = contentList?.options?.layout === "creative";
     class:list={[
       "container",
       sidebarEnabled &&
-        "grid grid-cols-1 gap-y-16 lg:grid-cols-12 lg:items-start",
+        "grid grid-cols-1 gap-y-6 lg:grid-cols-12 lg:items-start lg:gap-y-16",
       sidebarEnabled && (isCreativeList ? "lg:gap-x-15" : "lg:gap-x-8"),
     ]}>
     {
@@ -40,7 +40,7 @@ const isCreativeList = contentList?.options?.layout === "creative";
           class:list={[
             "has-video-modal",
             sidebarEnabled
-              ? "order-1 space-y-10 lg:col-span-8"
+              ? "order-3 space-y-10 lg:col-span-8 lg:order-1"
               : "w-full space-y-12",
           ]}>
           <ContentList {...contentList} />

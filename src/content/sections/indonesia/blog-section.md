@@ -19,5 +19,6 @@ button:
 
 options:
   layout: "grid" # grid | overlay | horizontal
-  limit: 3 # false / number
+  columns: 4 # 1 / 2 / 3 / 4
+  limit: 4 # false / number
 ---

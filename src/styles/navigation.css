@@ -152,7 +152,7 @@
   }
 }
 .navbar-mobile {
-  @apply flex min-h-fit border-0 p-0 opacity-100 lg:hidden;
+  @apply flex min-h-fit border-0 bg-transparent p-0 opacity-100 lg:hidden;
   .nav-link {
     @apply ps-0! hover:bg-transparent!;
   }
@@ -174,7 +174,7 @@
   }
 
   .logo-wrapper .logo {
-    @apply brightness-100;
+    @apply brightness-0 invert;
   }
 
   .logo-wrapper .logo-text {
@@ -277,8 +277,10 @@ header.has-dark-background .navbar .badge {
 
 /* Hide alternate logo */
 header {
-  .logo {
-    @apply brightness-0;
+  /* Match the wordmark height to the logo mark in the header only. */
+  .logo-wrapper .logo-text {
+    font-size: 2.5rem;
+    @apply leading-none;
   }
 
   .logo-text {
@@ -288,7 +290,7 @@ header {
   /* Show main logo in home page and alternate logo in other pages */
   &.header-dark {
     .logo {
-      @apply brightness-100;
+      @apply brightness-0 invert;
     }
 
     .logo-text {
@@ -301,11 +303,56 @@ header {
   }
 }
 
+/* Shrink the header logo mark and wordmark on mobile. */
+@media (max-width: 1023px) {
+  header .logo-wrapper .logo {
+    height: 24px !important;
+    width: auto !important;
+  }
+
+  header .logo-wrapper .logo-text {
+    font-size: 1.75rem;
+  }
+}
+
+/* Keep the header wordmark from wrapping on very narrow screens. */
+@media (max-width: 399px) {
+  header .logo-wrapper .logo {
+    height: 20px !important;
+  }
+
+  header .logo-wrapper .logo-text {
+    font-size: 1.5rem;
+  }
+}
+
+/* Dark appearance for the header offcanvas panel. */
+.offcanvas-navy {
+  @apply text-light;
+
+  .navbar-mobile {
+    @apply space-y-2;
+
+    > .nav-item > .nav-link {
+      @apply text-white rounded-xl px-5 py-3 ps-5! text-lg font-semibold hover:bg-white/5!;
+    }
+
+    > .nav-item > .nav-link-active {
+      @apply bg-primary text-white;
+
+      &::after {
+        content: "";
+        @apply ms-auto size-5;
+        background: currentColor;
+        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 18 6-6-6-6'/%3E%3C/svg%3E")
+          center / contain no-repeat;
+      }
+    }
+  }
+}
+
 /* Show main logo in footer */
 footer {
-  .logo {
-    @apply brightness-0;
-  }
   .logo-text {
     @apply text-dark;
   }
@@ -332,8 +379,7 @@ footer {
     }
 
     .footer-description,
-    .footer-link,
-    .footer-copyright {
+    .footer-link {
       @apply text-light!;
     }
 
@@ -341,7 +387,13 @@ footer {
       @apply hover:text-white!;
     }
 
-    .footer-bottom {}
+    .footer-bottom {
+      @apply border-white/10;
+    }
+
+    .footer-copyright {
+      @apply text-light/60!;
+    }
 
     .footer-social a {
       @apply hover:bg-primary! bg-white/10! text-white!;
@@ -349,9 +401,14 @@ footer {
   }
 }
 
+/* Copyright bar */
+.footer-bottom {
+  @apply border-border-light border-t py-5 text-center;
+}
+
 .header.has-dark-background .logo-wrapper {
   .logo {
-    @apply brightness-100;
+    @apply brightness-0 invert;
   }
   .logo-text {
     @apply text-white;

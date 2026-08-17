@@ -1,46 +1,34 @@
 ---
-import { getCollectionCTM } from "@/lib/contentParser.astro";
-import { useTranslations } from "@/lib/utils/i18nUtils.ts";
 import Icons from "@/helpers/Icons.astro";
-
-const members = await getCollectionCTM("team", Astro.currentLocale);
-const t = await useTranslations(Astro.currentLocale as string);
 ---
 
-<div class="border-border-light bg-theme-light rounded-2xl border p-7">
-  <h2 class="text-h5-sm md:text-h5 mb-5">Cari Produk</h2>
-  <form class="relative" id="product-search">
+<div>
+  <form id="product-search" class="relative">
+    <Icons
+      class="text-text-default pointer-events-none absolute top-1/2 start-4 size-5 -translate-y-1/2 opacity-50"
+      icon="Search"
+    />
     <input
       name="search"
       type="text"
-      placeholder="Cari produk..."
-      class="form-input w-full rounded-md border-none! bg-white! p-5! pe-16! placeholder:opacity-60!"
+      placeholder="Cari produk berdasarkan nama, kode, atau kategori..."
+      class="form-input border-border-light w-full rounded-xl border! bg-white! p-3! ps-11! text-sm! transition placeholder:opacity-60! md:text-base! focus:border-primary!"
     />
-    <button
-      type="submit"
-      class="has-icon-moving-animation text-primary absolute inset-y-0 inset-e-0 flex w-14 items-center justify-center bg-white">
-      <span class="sr-only">Cari</span>
-      <Icons class="size-5" icon="Search" />
-    </button>
   </form>
 </div>
 
 <script>
   const searchForm = document.getElementById("product-search");
+  const searchInput = searchForm?.querySelector("[name='search']") as
+    | HTMLInputElement
+    | undefined;
+
   searchForm?.addEventListener("submit", (e) => {
     e.preventDefault();
-    const term = searchForm.querySelector("[name='search']")?.value?.trim().toLowerCase() || "";
-    const cards = document.querySelectorAll(".product-team-card");
-    cards.forEach((card) => {
-      const title = card.querySelector("[data-product-title]")?.textContent?.toLowerCase() || "";
-      card.classList.toggle("hidden", term !== "" && !title.includes(term));
-    });
+    document.dispatchEvent(new CustomEvent("product-filter:change"));
   });
 
-  searchForm?.querySelector("[name='search']")?.addEventListener("input", (e) => {
-    if ((e.target as HTMLInputElement).value.trim() === "") {
-      const cards = document.querySelectorAll(".product-team-card");
-      cards.forEach((card) => card.classList.remove("hidden"));
-    }
+  searchInput?.addEventListener("input", () => {
+    document.dispatchEvent(new CustomEvent("product-filter:change"));
   });
 </script>

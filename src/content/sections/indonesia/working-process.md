@@ -11,3 +11,4 @@ list:
   - title: "Pengiriman & Serah Terima"
     description: "Pesanan dikirim, dicek bersama, serah terima dan pelunasan."
     image: "/images/process/step-03.png"
+---

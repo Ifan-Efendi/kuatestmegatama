@@ -1,16 +1,15 @@
 ---
-title: "Jordan Flynn"
-customSlug: "jordan-flynn"
-# Use transparent .png portraits for the best professional gradient background result.
-image: "/images/team/3.png"
-profession: "Frontend Engineer"
-metaDescription: "Meet Jordan Flynn, a creative frontend engineer with a passion for clean code and innovative UI."
+title: "Compression Testing Machine"
+customSlug: "compression-testing-machine"
+image: ""
+profession: "Alat Uji Beton"
+metaDescription: "Compression Testing Machine untuk pengujian kuat tekan beton dan material lainnya."
 draft: false
 categories:
   - "Alat Uji Beton"
 
-email: "jordan.flynn@example.com"
-phone: "+1 415 555 2403"
+email: "info@kuatest.co.id"
+phone: "+62 811-2222-3333"
 
 social:
   - enable: true
@@ -18,19 +17,9 @@ social:
     icon: "FaFacebook"
     url: "https://www.facebook.com/example-company"
   - enable: true
-    label: "twitter"
-    icon: "FaXTwitter"
-    url: "https://twitter.com/example_company"
-  - enable: true
     label: "instagram"
     icon: "FaInstagram"
     url: "https://www.instagram.com/example_company"
-  - enable: true
-    label: "linkedin"
-    icon: "FaLinkedin"
-    url: "https://www.linkedin.com/company/example-company"
 ---
 
-Jordan brings over 8 years of experience building interactive and accessible web applications. As a senior engineer, he leads frontend architecture at several SaaS startups and contributes to open-source projects regularly.
-
-He’s passionate about clean code, design systems, and creating pixel-perfect UIs that deliver performance at scale.
+Compression Testing Machine digunakan untuk mengukur kuat tekan beton, mortar, dan material konstruksi lainnya. Tersedia berbagai kapasitas sesuai kebutuhan laboratorium pengujian.

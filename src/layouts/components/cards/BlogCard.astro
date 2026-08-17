@@ -1,11 +1,6 @@
 ---
 import dateFormat from "@/lib/utils/dateFormat";
-import {
-  humanize,
-  plainify,
-  slugifyyy,
-  toSentenceCase,
-} from "@/lib/utils/textConverter";
+import { plainify, toSentenceCase } from "@/lib/utils/textConverter";
 import OptimizedImage from "@/components/utilities/OptimizedImage.astro";
 import { getLocaleUrlCTM, useTranslations } from "@/lib/utils/i18nUtils.ts";
 import Button from "@/components/Button.astro";
@@ -31,14 +26,8 @@ let {
 let {
   collection,
   body,
-  data: { title, image, date, categories, description } = {},
+  data: { title, image, date, description } = {},
 } = content;
-
-// Format categories
-const categoriesArray = categories?.map((category: string) => ({
-  name: category,
-  slug: slugifyyy(category),
-}));
 
 let slug = getLocaleUrlCTM(
   extractSlug(content),
@@ -101,7 +90,7 @@ const cursorLabel = t("common.readBlog");
       data-cursor-type="blog"
       class:list={[
         className,
-        "group border-border-light text-text-default overflow-hidden rounded-2xl border bg-white transition duration-300",
+        "group border-border-light text-text-default shadow-card overflow-hidden rounded-2xl border bg-white transition duration-300 hover:shadow-card-hover",
       ]}
       {...rest}>
       <div class="aspect-blog-card-image relative overflow-hidden">
@@ -121,29 +110,12 @@ const cursorLabel = t("common.readBlog");
           title={toSentenceCase(t("common.learnMoreAbout") + " " + title)}
         />
       </div>
-      <div class="p-7">
-        <div class="font-primary text-text-default flex flex-wrap items-center gap-x-2.5 gap-y-px text-base leading-7 transition duration-300">
-          {categoriesArray &&
-            categoriesArray.map((category: any, index: number) => (
-              <>
-                <a
-                  href={getLocaleUrlCTM(
-                    `/category/${category.slug}`,
-                    Astro.currentLocale,
-                    collection,
-                  )}
-                  class="hover:text-primary relative z-20 transition"
-                  set:html={humanize(category.name)}
-                />
-                {(index !== categoriesArray.length - 1 || date) && (
-                  <span class="inline-block size-1 rounded-full bg-current" />
-                )}
-              </>
-            ))}
+      <div class="p-4 md:p-7">
+        <div class="font-primary text-text-default flex flex-wrap items-center gap-x-2.5 gap-y-px text-xs leading-4 transition duration-300 md:text-base md:leading-7">
           <span data-post-date>{date && dateFormat(date)}</span>
         </div>
         {title && (
-          <h2 class="text-h5-sm md:text-h5 mt-1.5 mb-5 w-full">
+          <h2 class="mt-1.5 mb-3 w-full text-base md:mb-5 md:text-h5-sm xl:text-h5">
             <a
               href={slug}
               data-post-link
@@ -157,7 +129,7 @@ const cursorLabel = t("common.readBlog");
           data-post-link
           href={slug}
           title={toSentenceCase(t("common.learnMoreAbout") + " " + title)}
-          class="has-icon-moving-animation text-primary relative z-20 inline-flex items-center gap-1 text-base leading-6 font-semibold">
+          class="has-icon-moving-animation text-primary relative z-20 inline-flex items-center gap-1 text-sm leading-6 font-semibold md:text-base">
           <span set:html={t("common.learnMore")} />
           <span class="sr-only" set:html={" " + plainify(title || "")} />
           <span class="icons-wrapper inline-flex size-5 text-xl">
@@ -199,23 +171,6 @@ const cursorLabel = t("common.readBlog");
       </div>
       <div class="p-6 md:p-8">
         <div class="font-primary text-text-default flex flex-wrap items-center gap-x-2.5 gap-y-px text-base transition duration-300">
-          {categoriesArray &&
-            categoriesArray.map((category: any, index: number) => (
-              <>
-                <a
-                  href={getLocaleUrlCTM(
-                    `/category/${category.slug}`,
-                    Astro.currentLocale,
-                    collection,
-                  )}
-                  class="hover:text-primary relative z-20 transition"
-                  set:html={humanize(category.name)}
-                />
-                {(index !== categoriesArray.length - 1 || date) && (
-                  <span class="inline-block size-1 rounded-full bg-current" />
-                )}
-              </>
-            ))}
           <span data-post-date>{date && dateFormat(date)}</span>
         </div>
         {title && (
@@ -276,20 +231,6 @@ const cursorLabel = t("common.readBlog");
           <span class="text-light/80" data-post-date>
             {date && dateFormat(date)}
           </span>
-          <span class="bg-theme-light inline-block size-1 rounded-full" />
-
-          {categoriesArray &&
-            categoriesArray.map((category: any, index: number) => (
-              <>
-                <span
-                  class="text-light/80"
-                  set:html={humanize(category.name)}
-                />
-                {index !== categoriesArray.length - 1 && (
-                  <span class="bg-theme-light inline-block size-1 rounded-full" />
-                )}
-              </>
-            ))}
         </div>
         {title && (
           <h2 class="md:text-h5 text-h5-sm mb-6 text-inherit">

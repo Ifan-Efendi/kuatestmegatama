@@ -1,16 +1,15 @@
 ---
-title: "Marcus Riley"
-customSlug: "marcus-riley"
-# Use transparent .png portraits for the best professional gradient background result.
-image: "/images/team/5.png"
-profession: "Full Stack Developer"
-metaDescription: "Meet Marcus Riley, a full stack developer with a passion for building performant, scalable web apps."
+title: "Point Load Test Apparatus"
+customSlug: "point-load-test-apparatus"
+image: ""
+profession: "Alat Uji Batuan"
+metaDescription: "Point Load Test Apparatus untuk pengujian kekuatan batuan di lapangan."
 draft: false
 categories:
   - "Alat Uji Batuan"
 
-email: "marcus.riley@example.com"
-phone: "+1 415 555 2405"
+email: "info@kuatest.co.id"
+phone: "+62 811-2222-3333"
 
 social:
   - enable: true
@@ -18,19 +17,9 @@ social:
     icon: "FaFacebook"
     url: "https://www.facebook.com/example-company"
   - enable: true
-    label: "twitter"
-    icon: "FaXTwitter"
-    url: "https://twitter.com/example_company"
-  - enable: true
     label: "instagram"
     icon: "FaInstagram"
     url: "https://www.instagram.com/example_company"
-  - enable: true
-    label: "linkedin"
-    icon: "FaLinkedin"
-    url: "https://www.linkedin.com/company/example-company"
 ---
 
-Marcus blends backend logic with frontend finesse to deliver end-to-end web solutions. He’s worked on fintech, B2B platforms, and open-source tools adopted by startups across the globe.
-
-He’s fluent in TypeScript, Node.js, and scalable infrastructure patterns.
+Point Load Test Apparatus digunakan untuk menentukan indeks kekuatan batuan dengan cepat, baik di laboratorium maupun di lapangan. Alat ini ringkas dan mudah dioperasikan.

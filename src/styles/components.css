@@ -463,6 +463,24 @@
     var(--color-theme-dark);
 }
 
+/* Mobile: replace the desktop edge bands with soft top/bottom glows. */
+@media (max-width: 767px) {
+  .cta-section-background {
+    background:
+      radial-gradient(
+        90% 70% at 50% 0%,
+        var(--cta-gradient-primary-medium),
+        var(--cta-gradient-transparent) 70%
+      ),
+      radial-gradient(
+        90% 70% at 50% 100%,
+        var(--cta-gradient-primary-medium),
+        var(--cta-gradient-transparent) 70%
+      ),
+      var(--color-theme-dark);
+  }
+}
+
 .cta-section-background-darker {
   --cta-gradient-primary-strong: color-mix(
     in srgb,

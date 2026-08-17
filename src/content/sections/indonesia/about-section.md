@@ -11,7 +11,7 @@ subtitle: "Supplier Alat Uji Laboratorium Teknik Sipil Terpercaya"
 description: |
   PT. Kuatest Mega Tama merupakan perusahaan yang bergerak di bidang pengadaan alat uji laboratorium teknik sipil. Kami menyediakan berbagai alat uji tanah, beton, aspal, batuan, semen, dan alat laboratorium umum untuk mendukung proyek konstruksi, penelitian, dan pengujian material di seluruh Indonesia.
 
-  Berdiri sejak tahun 2000, kami telah melayani ratusan klien dari berbagai sektor seperti kontraktor, konsultan, perguruan tinggi, hingga instansi pemerintah. Dengan tim teknis yang berpengalaman, kami memberikan konsultasi gratis untuk membantu Anda memilih alat yang tepat sesuai kebutuhan proyek.
+  Berdiri sejak tahun 2023, kami telah melayani berbagai klien dari sektor kontraktor, konsultan, perguruan tinggi, hingga instansi pemerintah. Dengan tim teknis yang berpengalaman, kami memberikan konsultasi gratis untuk membantu Anda memilih alat yang tepat sesuai kebutuhan proyek.
 
   Kami berkomitmen menyediakan produk berkualitas, bergaransi, harga kompetitif, dan pengiriman tepat waktu ke seluruh wilayah Indonesia. Kepuasan pelanggan adalah prioritas utama kami.
 
@@ -32,3 +32,4 @@ buttons:
     rel: "noopener"
     target: "_blank"
     class: ""
+---

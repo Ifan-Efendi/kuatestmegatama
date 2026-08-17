@@ -1,6 +1,4 @@
 ---
-import Search from "./Search.astro";
-import Categories from "./Categories.astro";
 import RecentPosts from "./RecentPosts.astro";
 import Tags from "./Tags.astro";
 
@@ -18,18 +16,12 @@ interface Props {
 }
 
 const { content, ...rest } = Astro.props;
-const { sticky, position, search, recentPosts } = content;
+const { sticky, position, recentPosts } = content;
 
 const {
-  widgets: widgetList = ["Search", "Categories", "RecentPosts", "Tags"],
+  widgets: widgetList = ["RecentPosts", "Tags"],
 } = content;
 const widgets = [
-  { name: "Search", Component: Search, props: search },
-  {
-    name: "Categories",
-    Component: Categories,
-    props: {},
-  },
   {
     name: "RecentPosts",
     Component: RecentPosts,
@@ -41,28 +33,42 @@ const widgets = [
     props: {},
   },
 ];
+
+// On mobile the sidebar dissolves (display: contents) so the widgets
+// can be ordered above the article grid.
+const widgetOrder: Record<string, string> = {
+  RecentPosts: "max-lg:order-4",
+  Tags: "max-lg:order-5",
+};
 ---
 
 <div
   {...rest}
   class:list={[
     "lg:col-span-4 lg:ms-auto lg:w-full lg:max-w-95",
+    "max-lg:contents",
     sticky ? "sticky-sidebar lg:sticky" : "space-y-6",
     position === "right" ? "order-2" : "order-2 lg:order-1",
   ]}>
   {
     sticky ? (
-      <div class:list={["space-y-6"]}>
+      <div class:list={["space-y-6", "max-lg:contents"]}>
         {widgets
           .filter(({ name }) => widgetList.includes(name))
-          .map(({ Component, props }) => (
-            <Component {...props} />
+          .map(({ name, Component, props }) => (
+            <div class={widgetOrder[name]}>
+              <Component {...props} />
+            </div>
           ))}
       </div>
     ) : (
       widgets
         .filter(({ name }) => widgetList.includes(name))
-        .map(({ Component, props }) => <Component {...props} />)
+        .map(({ name, Component, props }) => (
+          <div class={widgetOrder[name]}>
+            <Component {...props} />
+          </div>
+        ))
     )
   }
 </div>

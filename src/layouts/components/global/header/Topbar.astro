@@ -42,7 +42,7 @@ const sizeClass = size === "compact" ? "py-3 text-sm" : "py-4 text-sm";
         resolvedLeftContent.includes("office-hours") && (
           <div class="flex items-center gap-2">
             <DynamicIcon name="Clock" class="size-4 shrink-0" />
-            <span set:html={markdownify(officeHours)} />
+            <span set:html={markdownify(officeHours ?? "")} />
           </div>
         )
       }

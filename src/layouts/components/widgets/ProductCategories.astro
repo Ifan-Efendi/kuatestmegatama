@@ -1,7 +1,6 @@
 ---
 import { getCollectionCTM } from "@/lib/contentParser.astro";
 import { getTaxonomy } from "@/lib/taxonomyParser.astro";
-import { useTranslations } from "@/lib/utils/i18nUtils.ts";
 
 interface Category {
   name: string;
@@ -15,7 +14,11 @@ interface Props {
 
 const members = await getCollectionCTM("team", Astro.currentLocale);
 
-let categories = (await getTaxonomy("team", "categories", Astro.currentLocale as string)) as Category[];
+let categories = (await getTaxonomy(
+  "team",
+  "categories",
+  Astro.currentLocale as string,
+)) as Category[];
 
 categories = categories.map((category) => {
   const count = members.filter((member) =>
@@ -24,8 +27,6 @@ categories = categories.map((category) => {
 
   return { ...category, count };
 });
-
-const t = await useTranslations(Astro.currentLocale as string);
 
 categories = categories.sort((a, b) => {
   if (a.name === "Alat Laboratorium Umum") return 1;
@@ -36,49 +37,84 @@ categories = categories.sort((a, b) => {
 
 {
   categories && categories.length > 0 && (
-    <div class="bg-theme-light rounded-2xl p-6 md:p-8" id="product-categories">
-      <h2 class="text-h5-sm md:text-h5 mb-6">Kategori</h2>
-      <div class="space-y-3">
-        <button
-          data-category=""
-          class="text-primary hover:text-primary relative flex w-full items-center gap-4 text-base font-medium transition duration-300 cursor-pointer bg-transparent border-0 text-left">
-          <span>Semua Produk</span>
-          <div class="ms-auto text-sm">({members.length})</div>
+    <div id="product-categories">
+      <div class="flex flex-wrap gap-2">
+        <button type="button" data-category="" class="cat-chip is-active">
+          Semua Kategori
+          <span class="cat-chip-count">{members.length}</span>
         </button>
-        {categories.map((category) => (
-          <button
-            data-category={category.name}
-            class="hover:text-primary relative flex w-full items-center gap-4 text-base transition duration-300 cursor-pointer bg-transparent border-0 text-left">
-            <span class="truncate" set:html={category.name} />
-            <div class="ms-auto text-sm" set:html={`(${category.count})`} />
-          </button>
-        ))}
+        {
+          categories.map((category) => (
+            <button
+              type="button"
+              data-category={category.name}
+              class="cat-chip">
+              <span set:html={category.name} />
+              <span class="cat-chip-count" set:html={String(category.count)} />
+            </button>
+          ))
+        }
       </div>
     </div>
   )
 }
 
+<style>
+  .cat-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    border: 1px solid var(--color-border-light);
+    border-radius: 9999px;
+    background: var(--color-body);
+    padding: 0.5rem 1rem;
+    color: var(--color-text-default);
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25;
+    box-shadow: 0 1px 2px rgb(7 8 0 / 0.06);
+    transition: all 0.3s;
+  }
+
+  .cat-chip:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  .cat-chip.is-active,
+  .cat-chip.is-active:hover {
+    background: var(--color-theme-dark);
+    border-color: var(--color-theme-dark);
+    color: #ffffff;
+  }
+
+  .cat-chip-count {
+    border-radius: 9999px;
+    background: rgb(7 8 0 / 0.06);
+    padding: 0.125rem 0.5rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+  }
+
+  .cat-chip.is-active .cat-chip-count {
+    background: rgb(255 255 255 / 0.18);
+  }
+</style>
+
 <script>
   const filterContainer = document.getElementById("product-categories");
+
   filterContainer?.addEventListener("click", (e) => {
-    const btn = (e.target as HTMLElement).closest("[data-category]") as HTMLElement;
+    const btn = (e.target as HTMLElement).closest(
+      "[data-category]",
+    ) as HTMLElement;
     if (!btn) return;
 
-    const category = btn.dataset.category || "";
-    const cards = document.querySelectorAll<HTMLElement>(".product-team-card");
-
     filterContainer.querySelectorAll("[data-category]").forEach((b) => {
-      b.classList.toggle("text-primary", b === btn);
-      b.classList.toggle("font-medium", b === btn);
+      b.classList.toggle("is-active", b === btn);
     });
 
-    cards.forEach((card) => {
-      if (!category) {
-        card.classList.remove("hidden");
-        return;
-      }
-      const cardCategories = (card.dataset.productCategories || "").split(",").map((c) => c.trim());
-      card.classList.toggle("hidden", !cardCategories.includes(category));
-    });
+    document.dispatchEvent(new CustomEvent("product-filter:change"));
   });
 </script>

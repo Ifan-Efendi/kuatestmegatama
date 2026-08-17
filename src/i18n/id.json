@@ -55,7 +55,7 @@
     "buttonLabel": "Kembali ke Beranda"
   },
   "headerOffcanvas": {
-    "description": "Mitra Terpercaya Sekaligus Vendor Pengadaan Alat Teknik Sipil Meliputi Alat Uji Tanah, Beton, Aspal, Batuan, Semen, dan Alat Laboratorium Umum.",
+    "description": "Mitra sekaligus vendor terpercaya pengadaan alat laboratorium teknik sipil.",
     "addressLabel": "Alamat",
     "contactLabel": "Kontak"
   },
@@ -76,11 +76,11 @@
     "searchPlaceholder": "Cari..."
   },
   "footer": {
-    "description": "Mitra Terpercaya Sekaligus Vendor Pengadaan Alat Teknik Sipil Meliputi Alat Uji Tanah, Beton, Aspal, Batuan, Semen, dan Alat Laboratorium Umum.",
+    "description": "Mitra sekaligus vendor terpercaya pengadaan alat laboratorium teknik sipil.",
     "quickLinksTitle": "Tautan Cepat",
     "servicesTitle": "Layanan",
     "informationTitle": "Informasi",
-    "copyright": "Hak Cipta © 2026 PT. Kuatest Mega Tama. Semua hak dilindungi.",
+    "copyright": "Hak Cipta © 2023 PT. Kuatest Mega Tama. Semua hak dilindungi.",
     "_comment": "Teks footer sesuai desain footer default. Perbarui nilai ini jika hak cipta produk berubah."
   }
 }

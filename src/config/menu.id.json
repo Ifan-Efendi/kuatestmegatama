@@ -53,7 +53,7 @@
         {
           "enable": true,
           "name": "Galeri",
-          "url": "/#gallery"
+          "url": "/gallery/"
         },
         {
           "enable": true,

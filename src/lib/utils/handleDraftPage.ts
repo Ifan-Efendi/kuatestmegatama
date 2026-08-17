@@ -6,7 +6,7 @@
  * @param {PageData} pageData - The page's frontmatter data object
  * @returns {Response | undefined} A 404 Response if draft is true; otherwise undefined.
  */
-function handleDraftPage(pageData: any): Response | undefined {
+function handleDraftPage(pageData?: any): Response | undefined {
   if (pageData?.draft && import.meta.env.PROD) {
     // Return a 404 response to exclude the page from `dist` folder output
     return new Response(null, {

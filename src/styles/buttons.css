@@ -3,7 +3,7 @@
 /* ====================================================== */
 
 @utility btn {
-  @apply relative inline-block overflow-hidden rounded-lg px-6 py-5 leading-tight font-medium whitespace-nowrap text-white capitalize duration-300 disabled:cursor-not-allowed;
+  @apply relative inline-block overflow-hidden rounded-full px-7 py-4 leading-tight font-semibold whitespace-nowrap text-white capitalize duration-300 disabled:cursor-not-allowed;
 }
 @utility btn-sm {
   @apply px-10 py-3;

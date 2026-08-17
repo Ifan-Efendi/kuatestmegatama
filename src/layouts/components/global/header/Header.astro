@@ -1,5 +1,4 @@
 ---
-import Button from "@/components/Button.astro";
 import Logo from "@/components/global/Logo.astro";
 import HeaderOffcanvasContent from "@/components/widgets/HeaderOffcanvasContent.astro";
 import Offcanvas from "../../widgets/Offcanvas.astro";
@@ -7,7 +6,8 @@ import LanguageSwitcher from "@/layouts/components/global/header/LanguageSwitche
 import NavbarToggler from "@/layouts/components/global/header/NavbarToggler.astro";
 import Navbar from "./Navbar.astro";
 import Topbar from "./Topbar.astro";
-import { useTranslations } from "@/lib/utils/i18nUtils.ts";
+import Icons from "@/helpers/Icons.astro";
+import { getLocaleUrlCTM, useTranslations } from "@/lib/utils/i18nUtils.ts";
 import config from ".astro/config.generated.json";
 import type { HeaderLayout } from "@/types";
 
@@ -84,7 +84,13 @@ const hasLanguageSwitcher =
 
 const navigationButton = { ...navBtnConfig, ...customNavigationButton };
 
-const hasDesktopActions = hasLanguageSwitcher || navigationButton.enable;
+const hasDesktopActions =
+  hasLanguageSwitcher || navigationButton.enable || true;
+
+const searchProductUrl = getLocaleUrlCTM(
+  "/services/",
+  Astro.currentLocale,
+);
 const logoSrc = currentLayout.hasDarkAppearance ? logoAlternate : undefined;
 const accentAppearance = currentLayout.hasDarkAppearance ? "light" : "dark";
 const isHomepage =
@@ -144,31 +150,51 @@ const isHomepage =
                 <LanguageSwitcher appearance={accentAppearance} />
               )}
 
-              {navigationButton.enable && (
-                <Button
-                  variant="fill"
-                  hoverEffect="creative-fill"
-                  {...navigationButton}
-                  label={t("navigation.buttonLabel")}
+              <form
+                action={searchProductUrl}
+                method="get"
+                class="relative hidden lg:block">
+                <Icons
+                  class="text-text-default pointer-events-none absolute top-1/2 start-4 size-4 -translate-y-1/2 opacity-60"
+                  icon="Search"
                 />
-              )}
+                <input
+                  type="text"
+                  name="q"
+                  placeholder="Cari produk..."
+                  class="border-border-light focus:border-primary text-dark h-10 w-44 rounded-full border bg-white pr-3 pl-10 text-sm transition-colors focus:outline-none xl:w-56"
+                />
+              </form>
             </div>
           )
         }
 
         {
           headerOffcanvas?.enable && (
-            <NavbarToggler
-              title={t("aria.openSidebarContent")}
-              appearance={accentAppearance}
-              isOffcanvasToggler={true}
-              class:list={["rounded-md", "lg:hidden"]}
-              aria-haspopup="dialog"
-              aria-expanded="false"
-              aria-controls="offcanvas-main"
-              data-hs-overlay="#offcanvas-main"
-              data-hs-overlay-options='{"emulateScrollbarSpace": true}'
-            />
+            <div class="flex items-center max-lg:ms-auto lg:hidden">
+              <a
+                href={searchProductUrl}
+                title="Cari produk"
+                class:list={[
+                  "inline-flex h-12 w-12 items-center justify-center rounded border text-center transition",
+                  accentAppearance === "light"
+                    ? "border-white/10 bg-white/10 text-white"
+                    : "bg-slate-100 text-slate-800",
+                ]}>
+                <Icons class="size-5" icon="Search" />
+              </a>
+              <NavbarToggler
+                title={t("aria.openSidebarContent")}
+                appearance={accentAppearance}
+                isOffcanvasToggler={true}
+                class:list={["rounded-md", "max-lg:me-0", "lg:hidden"]}
+                aria-haspopup="dialog"
+                aria-expanded="false"
+                aria-controls="offcanvas-main"
+                data-hs-overlay="#offcanvas-main"
+                data-hs-overlay-options='{"emulateScrollbarSpace": true}'
+              />
+            </div>
           )
         }
       </div>

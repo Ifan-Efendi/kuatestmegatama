@@ -1,16 +1,15 @@
 ---
-title: "Daniyel Karlos"
-customSlug: "daniyel-karlos"
-# Use transparent .png portraits for the best professional gradient background result.
-image: "/images/team/1.png"
-profession: "Web Developer"
-metaDescription: "Web developer focused on accessible interfaces, frontend architecture, and reliable product delivery."
+title: "CBR Test Set"
+customSlug: "cbr-test-set"
+image: ""
+profession: "Alat Uji Tanah"
+metaDescription: "CBR Test Set untuk pengujian daya dukung tanah di laboratorium maupun lapangan."
 draft: false
 categories:
   - "Alat Uji Tanah"
 
-email: "daniyel.karlos42@gmail.com"
-phone: "+1 415 555 2387"
+email: "info@kuatest.co.id"
+phone: "+62 811-2222-3333"
 
 social:
   - enable: true
@@ -18,19 +17,9 @@ social:
     icon: "FaFacebook"
     url: "https://www.facebook.com/example-company"
   - enable: true
-    label: "twitter"
-    icon: "FaXTwitter"
-    url: "https://twitter.com/example_company"
-  - enable: true
     label: "instagram"
     icon: "FaInstagram"
     url: "https://www.instagram.com/example_company"
-  - enable: true
-    label: "linkedin"
-    icon: "FaLinkedin"
-    url: "https://www.linkedin.com/company/example-company"
 ---
 
-Daniyel builds responsive web experiences for SaaS platforms, service companies, and internal product teams. His work focuses on clean structure, performance, accessibility, and long-term maintainability.
-
-He works closely with designers and backend teams to turn ideas into polished, production-ready interfaces.
+CBR Test Set digunakan untuk mengukur California Bearing Ratio tanah dasar, subbase, dan base course. Alat ini mendukung pengujian di laboratorium maupun di lapangan sesuai kebutuhan proyek konstruksi.

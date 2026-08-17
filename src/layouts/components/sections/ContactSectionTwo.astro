@@ -82,6 +82,8 @@ const infoList = Array.isArray(info)
 const hasLeftContent = Boolean(
   title || description || infoList.length || officeHours,
 );
+const hasLeftColumn = Boolean(infoList.length || officeHours);
+const hasHeaderContent = Boolean(title || description);
 const hasFormPanelContent = Boolean(
   formTitle || formDescription || formContent,
 );
@@ -93,31 +95,40 @@ if (!hasContentSource || !enable || (!hasLeftContent && !hasFormPanelContent)) {
 
 <section id="contact" class:list={[!hasSectionSpacing && "pt-0"]}>
   <div class:list={["section-spacing-lg-vertical bg-theme-light"]}>
-    <div
-      class:list={[
-        "container grid gap-14 lg:items-start",
-        hasLeftContent && hasFormPanelContent
-          ? "lg:grid-cols-2"
-          : "lg:grid-cols-1",
-      ]}>
+    <div class="container">
       {
-        hasLeftContent && (
+        hasHeaderContent && (
+          <div
+            class="mx-auto max-w-2xl text-center"
+            data-scroll-reveal="blur-up">
+            {title && <h2 set:html={markdownify(title)} />}
+            {description && (
+              <p class="mt-6" set:html={markdownify(description)} />
+            )}
+          </div>
+        )
+      }
+      <div
+        class:list={[
+          "grid gap-14 lg:items-start",
+          hasHeaderContent && "mt-14",
+          hasLeftColumn && hasFormPanelContent
+            ? "lg:grid-cols-2"
+            : "lg:grid-cols-1",
+        ]}>
+      {
+        hasLeftColumn && (
           <div
             class="lg:sticky lg:top-32 lg:self-start"
             data-scroll-reveal="blur-up">
-            {title && <h2 class="max-w-2xl" set:html={markdownify(title)} />}
-            {description && (
-              <p class="mt-6 max-w-2xl" set:html={markdownify(description)} />
-            )}
-
             {infoList.length > 0 && (
-              <div class="mt-12 grid gap-8 sm:grid-cols-2">
+              <div class="grid gap-8 sm:grid-cols-2">
                 {infoList.map((item, index) => (
                   <div
                     data-scroll-reveal="fade-up"
                     data-scroll-reveal-delay={index * 120}>
                     {item.icon && (
-                      <span class="bg-dark flex size-12 items-center justify-center rounded-md text-white">
+                      <span class="bg-dark flex size-10 items-center justify-center rounded-md text-white sm:size-12">
                         <DynamicIcon name={item.icon} class="size-6" />
                       </span>
                     )}
@@ -136,7 +147,7 @@ if (!hasContentSource || !enable || (!hasLeftContent && !hasFormPanelContent)) {
                   </div>
                 ))}
                 <div data-scroll-reveal="fade-up" data-scroll-reveal-delay={infoList.length * 120}>
-                  <span class="bg-dark flex size-12 items-center justify-center rounded-md text-white">
+                  <span class="bg-dark flex size-10 items-center justify-center rounded-md text-white sm:size-12">
                     <DynamicIcon name="ThumbsUp" class="size-6" />
                   </span>
                   <h3 class="text-h6 mt-5">Ikuti Sosmed Kami</h3>
@@ -180,6 +191,7 @@ if (!hasContentSource || !enable || (!hasLeftContent && !hasFormPanelContent)) {
           </div>
         )
       }
+      </div>
     </div>
   </div>
 </section>

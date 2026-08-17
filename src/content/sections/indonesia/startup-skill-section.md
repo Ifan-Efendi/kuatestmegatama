@@ -3,14 +3,14 @@ enable: true
 imagePosition: "left"
 
 images:
-  large: "/images/skill/skill-1.png"
-  small: "/images/skill/skill-2.jpg"
+  large: "/images/skill/hero-large.jpg"
+  small: "/images/skill/hero-small.jpg"
 
 title: |
-  PT. Kuatest Mega Tama – Mitra Terpercaya Pengadaan Alat Uji Laboratorium Teknik Sipil
-subtitle: |
-  Kami menyediakan berbagai alat uji tanah, beton, aspal, batuan, semen, dan alat laboratorium umum untuk mendukung proyek konstruksi dan penelitian Anda.
+  PT. KUATEST MEGA TAMA<br />
+  Mitra Terpercaya Pengadaan Alat Uji Laboratorium Teknik Sipil
 description: |
+  Kami menyediakan berbagai alat uji tanah, beton, aspal, batuan, semen, dan alat laboratorium umum untuk mendukung proyek konstruksi dan penelitian Anda.
   Berpengalaman sebagai vendor alat teknik sipil, kami berkomitmen membangun kerja sama dengan baik, menyediakan produk berkualitas dan bergaransi, serta cakupan pengiriman seluruh Indonesia.
 
 # EXTRATYPE OPTIONS: "skills" | "list-x" | "list-y" | "stats" | "none"
@@ -33,8 +33,8 @@ buttons:
     class: "" # String: Additional button Tailwind classes
 
 listItems:
-  - title: "Produk Berkualitas<br />& Bergaransi"
+  - title: "Produk Berkualitas <br />& Bergaransi"
     icon: "Settings"
-  - title: "Dukungan Teknis &<br />Konsultasi Gratis"
+  - title: "Dukungan Teknis & <br />Konsultasi Gratis"
     icon: "Headphones"
 ---

@@ -17,15 +17,15 @@
   --color-body: #fff;
   --color-body-dark: #070800;
   --color-theme-dark: #040D43;
-  --color-theme-light: #F5F6F7;
+  --color-theme-light: #F4F6FB;
 
   /* Content colors */
   --color-dark: #0A165E;
-  --color-light: #CED0DF;
-  --color-text-default: #585B6F;
+  --color-light: #CDD2E8;
+  --color-text-default: #565A6E;
 
   /* Border colors */
-  --color-border-light: #e5e5e5;
+  --color-border-light: #E4E7F2;
   --color-border-dark: #272F5D;
 
   /* Screen */
@@ -64,6 +64,8 @@
 
   --aspect-blog-card-image: 104 / 85;
   --shadow-card-hover: 0px 12px 40px 4px color-mix(in srgb, var(--color-dark) 8%, transparent);
+  --shadow-card: 0 1px 2px color-mix(in srgb, var(--color-dark) 4%, transparent),
+    0 12px 32px -20px color-mix(in srgb, var(--color-dark) 18%, transparent);
 
   --aspect-team-card-image: 51 / 55;
 

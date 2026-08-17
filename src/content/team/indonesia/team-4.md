@@ -1,16 +1,15 @@
 ---
-title: "Olivia Chen"
-customSlug: "olivia-chen"
-# Use transparent .png portraits for the best professional gradient background result.
-image: "/images/team/4.png"
-profession: "UI/UX Designer"
-metaDescription: "Meet Olivia Chen, a detail-oriented UI/UX designer focused on intuitive and elegant user experiences."
+title: "Slump Test Set"
+customSlug: "slump-test-set"
+image: ""
+profession: "Alat Uji Beton"
+metaDescription: "Slump Test Set untuk pengujian kekentalan dan workability beton segar."
 draft: false
 categories:
   - "Alat Uji Beton"
 
-email: "olivia.chen@example.com"
-phone: "+1 415 555 2404"
+email: "info@kuatest.co.id"
+phone: "+62 811-2222-3333"
 
 social:
   - enable: true
@@ -18,19 +17,9 @@ social:
     icon: "FaFacebook"
     url: "https://www.facebook.com/example-company"
   - enable: true
-    label: "twitter"
-    icon: "FaXTwitter"
-    url: "https://twitter.com/example_company"
-  - enable: true
     label: "instagram"
     icon: "FaInstagram"
     url: "https://www.instagram.com/example_company"
-  - enable: true
-    label: "linkedin"
-    icon: "FaLinkedin"
-    url: "https://www.linkedin.com/company/example-company"
 ---
 
-Olivia specializes in crafting seamless user interfaces and impactful visual designs. With 6+ years of experience in SaaS and eCommerce, she’s helped brands turn complex workflows into delightful experiences.
-
-She’s led redesigns for mobile-first platforms and mentors junior designers in building design systems.
+Slump Test Set digunakan untuk mengukur tingkat kekentalan atau workability beton segar sebelum pengecoran. Alat ini membantu memastikan mutu beton sesuai spesifikasi proyek.

@@ -61,13 +61,13 @@
 }
 
 @utility section-spacing {
-  @apply pt-16 lg:pt-20 xl:pt-24;
+  @apply pt-12 lg:pt-20 xl:pt-24;
 }
 @utility section-spacing-vertical {
-  @apply py-16 lg:py-20 xl:py-24;
+  @apply py-12 lg:py-20 xl:py-24;
 }
 @utility section-spacing-lg-vertical {
-  @apply py-20 lg:py-28 xl:py-44;
+  @apply py-16 lg:py-28 xl:py-44;
 }
 
 /* For debug */

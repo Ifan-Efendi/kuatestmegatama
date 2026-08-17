@@ -1,26 +1,25 @@
 ---
-title: "Ethan Brooks"
-customSlug: "ethan-brooks"
-# Use transparent .png portraits for the best professional gradient background result.
-image: "/images/team/8.png"
-profession: "Cybersecurity Consultant"
-metaDescription: "Cybersecurity consultant focused on risk assessment, compliance readiness, and secure cloud operations."
+title: "Universal Testing Machine"
+customSlug: "universal-testing-machine"
+image: ""
+profession: "Alat Laboratorium Umum"
+metaDescription: "Universal Testing Machine untuk pengujian tarik, tekan, dan lentur berbagai material."
 draft: false
 categories:
   - "Alat Laboratorium Umum"
-email: "ethan.brooks@example.com"
-phone: "+1 415 555 2411"
+
+email: "info@kuatest.co.id"
+phone: "+62 811-2222-3333"
+
 social:
   - enable: true
-    label: "linkedin"
-    icon: "FaLinkedin"
-    url: "https://www.linkedin.com/company/example-company"
+    label: "facebook"
+    icon: "FaFacebook"
+    url: "https://www.facebook.com/example-company"
   - enable: true
-    label: "twitter"
-    icon: "FaXTwitter"
-    url: "https://twitter.com/example_company"
+    label: "instagram"
+    icon: "FaInstagram"
+    url: "https://www.instagram.com/example_company"
 ---
 
-Ethan helps organizations identify security gaps before they become operational risks. His work spans audits, policy design, access controls, and cloud security reviews.
-
-He translates technical findings into practical priorities for leadership teams.
+Universal Testing Machine digunakan untuk pengujian tarik, tekan, dan lentur berbagai material teknik. Alat ini cocok untuk laboratorium material dan pengendalian mutu.

@@ -1,16 +1,15 @@
 ---
-title: "Nathan Drake"
-customSlug: "nathan-drake"
-# Use transparent .png portraits for the best professional gradient background result.
-image: "/images/team/2.png"
-profession: "Senior Frontend Engineer"
-metaDescription: "Experienced frontend engineer specializing in performance and user experience."
+title: "Sand Cone Test Set"
+customSlug: "sand-cone-test-set"
+image: ""
+profession: "Alat Uji Tanah"
+metaDescription: "Sand Cone Test Set untuk pengujian kepadatan tanah di lapangan."
 draft: false
 categories:
   - "Alat Uji Tanah"
 
-email: "nathan.drake@example.com"
-phone: "+1 415 555 2402"
+email: "info@kuatest.co.id"
+phone: "+62 811-2222-3333"
 
 social:
   - enable: true
@@ -18,19 +17,9 @@ social:
     icon: "FaFacebook"
     url: "https://www.facebook.com/example-company"
   - enable: true
-    label: "twitter"
-    icon: "FaXTwitter"
-    url: "https://twitter.com/example_company"
-  - enable: true
     label: "instagram"
     icon: "FaInstagram"
     url: "https://www.instagram.com/example_company"
-  - enable: true
-    label: "linkedin"
-    icon: "FaLinkedin"
-    url: "https://www.linkedin.com/company/example-company"
 ---
 
-Nathan brings over 8 years of experience building interactive and accessible web applications. As a senior engineer, he leads frontend architecture at several SaaS startups and contributes to open-source projects regularly.
-
-He’s passionate about clean code, design systems, and creating pixel-perfect UIs that deliver performance at scale.
+Sand Cone Test Set digunakan untuk menentukan kepadatan tanah di lapangan dengan metode kerucut pasir. Alat ini cocok untuk pengujian pemadatan tanah pada proyek jalan dan infrastruktur.

@@ -334,6 +334,18 @@ export const multipurposeSectionSchema = z
   })
   .optional();
 
+export const gallerySectionSchema = z.object({
+  photos: z
+    .array(
+      z.object({
+        image: z.string(),
+        caption: z.string().optional(),
+        tag: z.string().optional(),
+      }),
+    )
+    .optional(),
+});
+
 export const sectionsSchema = {
   servicesSection: servicesSectionSchema,
   ctaSection: ctaSectionSchema,
@@ -344,4 +356,5 @@ export const sectionsSchema = {
   bannerAgencySection: bannerAgencySectionSchema,
   workingProcessSection: workingProcessSectionSchema,
   multipurposeSection: multipurposeSectionSchema,
+  gallerySection: gallerySectionSchema.optional(),
 };

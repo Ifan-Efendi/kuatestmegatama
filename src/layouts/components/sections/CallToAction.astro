@@ -44,7 +44,7 @@ const isDarkAppearance = appearance === "dark";
 const isCenteredContent = centeredContent || isDarkAppearance;
 const buttonClass = [
   isDarkAppearance &&
-    "rounded-md px-7 py-4.5 text-base leading-6 font-semibold normal-case",
+    "px-7 py-4 text-base leading-6 font-semibold normal-case",
   appearance === "accent" && "effect-color-light",
   appearance === "light" && "effect-color-accent",
   button?.class,
@@ -68,7 +68,7 @@ if (!hasContentSource || !enable || !hasVisibleContent) {
   <div class:list={["relative overflow-hidden"]}>
     {
       isDarkAppearance ? (
-        <div class="cta-section-background section-spacing-vertical bg-theme-dark relative overflow-hidden py-20 text-center md:py-24 xl:py-32">
+        <div class="cta-section-background bg-theme-dark relative overflow-hidden py-14 text-center md:py-24 xl:py-32">
           <span
             aria-hidden="true"
             class="cta-section-dot-pattern cta-section-dot-pattern-start"
@@ -84,7 +84,7 @@ if (!hasContentSource || !enable || !hasVisibleContent) {
             <div class="mx-auto max-w-5xl">
               {title && (
                 <h2
-                  class="text-display-6 md:text-display-5 lg:text-display-4 mx-auto text-white"
+                  class="text-h1-sm md:text-display-5 lg:text-display-4 mx-auto text-white"
                   set:html={markdownify(title)}
                 />
               )}

@@ -27,7 +27,7 @@ const actualContent = overrideObjects(
 const { enable = true, title, list = [] } = actualContent;
 const { hasSectionSpacing = true } = Astro.props;
 
-if (!enable) {
+if (!enable || !list.length) {
   return null;
 }
 ---

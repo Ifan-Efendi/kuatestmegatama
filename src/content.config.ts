@@ -71,7 +71,9 @@ const blogCollection = defineCollection({
           .enum(["grid", "creative", "horizontal", "overlay"])
           .optional(),
         appearance: z.enum(["dark", "light"]).optional(),
-        columns: z.union([z.literal(1), z.literal(2), z.literal(3)]).optional(),
+        columns: z
+          .union([z.literal(1), z.literal(2), z.literal(3), z.literal(4)])
+          .optional(),
         limit: z.union([z.number().int(), z.literal(false)]).optional(),
       })
       .optional(),

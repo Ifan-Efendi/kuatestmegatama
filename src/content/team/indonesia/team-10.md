@@ -1,26 +1,25 @@
 ---
-title: "Miles Tanaka"
-customSlug: "miles-tanaka"
-# Use transparent .png portraits for the best professional gradient background result.
-image: "/images/team/10.png"
-profession: "Product Engineering Lead"
-metaDescription: "Product engineering leader specializing in SaaS delivery, design systems, and customer-facing platform teams."
+title: "Bitumen Penetrometer"
+customSlug: "bitumen-penetrometer"
+image: ""
+profession: "Alat Uji Aspal"
+metaDescription: "Bitumen Penetrometer untuk pengujian penetrasi aspal dan bitumen."
 draft: false
 categories:
   - "Alat Uji Aspal"
-email: "miles.tanaka@example.com"
-phone: "+1 415 555 2410"
+
+email: "info@kuatest.co.id"
+phone: "+62 811-2222-3333"
+
 social:
   - enable: true
-    label: "linkedin"
-    icon: "FaLinkedin"
-    url: "https://www.linkedin.com/company/example-company"
+    label: "facebook"
+    icon: "FaFacebook"
+    url: "https://www.facebook.com/example-company"
   - enable: true
-    label: "twitter"
-    icon: "FaXTwitter"
-    url: "https://twitter.com/example_company"
+    label: "instagram"
+    icon: "FaInstagram"
+    url: "https://www.instagram.com/example_company"
 ---
 
-Miles leads cross-functional engineering teams that ship customer-facing SaaS products. He brings a strong background in frontend systems, API design, and release operations.
-
-His teams are known for fast delivery cycles, clean implementation standards, and measurable product outcomes.
+Bitumen Penetrometer digunakan untuk mengukur nilai penetrasi aspal atau bitumen sesuai standar pengujian. Alat ini membantu memastikan karakteristik bahan pengikat jalan.

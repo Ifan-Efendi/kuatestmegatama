@@ -1,34 +1,23 @@
 ---
 import ProductSearch from "./ProductSearch.astro";
 import ProductCategories from "./ProductCategories.astro";
-
-interface Props {
-  sticky?: boolean;
-}
-
-const { sticky = true } = Astro.props;
 ---
 
-<div
-  class:list={[
-    "lg:col-span-4 lg:ms-auto lg:w-full lg:max-w-95",
-    sticky ? "sticky-sidebar lg:sticky" : "space-y-6",
-    "order-first lg:order-3",
-  ]}>
-  <div class="space-y-6">
-    <ProductSearch />
-    <ProductCategories />
-  </div>
+<div class="product-toolbar space-y-6">
+  <ProductSearch />
+  <ProductCategories />
 </div>
 
 <script>
-  import { stickySidebar } from "@/plugins/sticky-sidebar.js";
-
-  const sidebar = document.querySelector(".sticky-sidebar");
-  if (sidebar) {
-    new stickySidebar(sidebar, {
-      offsetTop: 132,
-      offsetBottom: 20,
-    });
+  const params = new URLSearchParams(window.location.search);
+  const query = params.get("q")?.trim();
+  if (query) {
+    const input = document.querySelector<HTMLInputElement>(
+      "#product-search [name='search']",
+    );
+    if (input) {
+      input.value = query;
+      document.dispatchEvent(new CustomEvent("product-filter:change"));
+    }
   }
 </script>

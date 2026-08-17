@@ -38,6 +38,7 @@ let actualContent = overrideObjects(
 
 // Extracting required values from 'content' object
 let { enable = true, title, button, options } = actualContent as blogInterface;
+const { columns = 3, limit = false } = options || {};
 
 let posts = await getCollectionCTM(blogFolder, Astro.currentLocale);
 
@@ -46,10 +47,10 @@ posts = sortByDate(posts);
 
 // Limit the number of items to be displayed
 posts =
-  options?.limit && posts ? posts.slice(0, options?.limit as number) : posts;
+  limit && posts ? posts.slice(0, limit as number) : posts;
 
 const { hasSectionSpacing = true } = Astro.props;
-const hasActionButton = Boolean(button?.enable && options?.limit);
+const hasActionButton = Boolean(button?.enable && limit);
 
 if (!enable) {
   return null;
@@ -59,9 +60,14 @@ if (!enable) {
 <section class:list={[!hasSectionSpacing && "pt-0"]}>
   <div class="container space-y-12">
     {title && (
-      <h2 class="max-w-2xl" data-scroll-reveal="blur-up" set:html={markdownify(title)} />
+      <h2 class="mx-auto max-w-2xl text-center" data-scroll-reveal="blur-up" set:html={markdownify(title)} />
     )}
-    <div class="grid gap-x-6 gap-y-10 md:grid-cols-2 xl:grid-cols-3">
+    <div class:list={[
+      "grid grid-cols-2 gap-x-4 gap-y-6 md:gap-x-6 md:gap-y-10",
+      columns === 1 && "grid-cols-1",
+      columns === 3 && "lg:grid-cols-3",
+      columns === 4 && "lg:grid-cols-3 xl:grid-cols-4",
+    ]}>
       {
         posts?.map((post, index) => (
           <div

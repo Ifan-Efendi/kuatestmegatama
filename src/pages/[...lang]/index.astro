@@ -6,7 +6,7 @@ import TeamSection from "@/components/sections/TeamSection.astro";
 import BlogSection from "@/components/sections/BlogSection.astro";
 import BannerThree from "@/components/sections/BannerThree.astro";
 import MultipurposeSection from "@/components/sections/Section.astro";
-import ServicesSection from "@/components/sections/ServicesSection.astro";
+import PartnerLogos from "@/components/sections/PartnerLogos.astro";
 import WorkingProcessSection from "@/components/sections/WorkingProcessSection.astro";
 import TestimonialQuoteSection from "@/components/sections/TestimonialQuoteSection.astro";
 import ContactSectionTwo from "@/components/sections/ContactSectionTwo.astro";
@@ -30,16 +30,30 @@ const skillSectionContent = await getEntryCTM(
 
 <Base {...homepageContent?.data} headerLayout="three" headerPosition="fixed">
   <BannerThree />
-  <ServicesSection
-    hasLightBackground={false}
-    content={{
-      options: {
-        layout: "carousel",
-      },
-    }}
+  <PartnerLogos
+    title="Mitra & Perusahaan Kami"
+    hasSectionBackground={true}
+    hasSectionSpacing={true}
+    logos={[
+      { name: "WIKA Beton", image: "/images/partners/wika-beton.png" },
+      { name: "Universitas Pelita Harapan", image: "/images/partners/uph.png" },
+      { name: "Istaka Karya", image: "/images/partners/istaka-karya.png" },
+      { name: "Waskita Karya", image: "/images/partners/waskita-karya.png" },
+      { name: "Abipraya", image: "/images/partners/abipraya.png" },
+      { name: "Bosowa", image: "/images/partners/bosowa.png" },
+      { name: "Hutama Karya", image: "/images/partners/hk.png" },
+      { name: "PP", image: "/images/partners/pp.png" },
+      { name: "Universidade da Paz", image: "/images/partners/partner-2.png" },
+      { name: "UNIB", image: "/images/partners/unib.png" },
+      { name: "JKB", image: "/images/partners/jkb.png" },
+      { name: "Nindya Karya", image: "/images/partners/nindya.png" },
+      { name: "SCG", image: "/images/partners/scg.png" },
+      { name: "Universitas Padang", image: "/images/partners/univ-padang.png" },
+    ]}
   />
   <MultipurposeSection
     hasSectionBackground={true}
+    hasSectionSpacing={false}
     content={skillSectionContent.data}
   />
   <WorkingProcessSection />

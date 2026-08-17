@@ -1,6 +1,6 @@
 [
   {
-    "name": "Sora",
+    "name": "Plus Jakarta Sans",
     "variants": [
       {
         "style": "normal",
@@ -12,7 +12,15 @@
       },
       {
         "style": "normal",
+        "weight": "600"
+      },
+      {
+        "style": "normal",
         "weight": "700"
+      },
+      {
+        "style": "normal",
+        "weight": "800"
       }
     ],
     "preload": true,

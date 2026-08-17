@@ -95,10 +95,10 @@ const cursorAttrs = isButtonEnabled
     <div
       {...cursorAttrs}
       class:list={[
-        "group relative flex gap-y-8 rounded-2xl bg-white p-8 drop-shadow-xl drop-shadow-transparent transition-all duration-300 hover:drop-shadow-slate-50 md:gap-y-14",
+        "group relative flex gap-y-8 rounded-2xl bg-white p-8 shadow-card transition-all duration-300 hover:shadow-card-hover md:gap-y-14",
         className,
         isIconLeft ? "flex-col md:flex-row" : "flex-col",
-        isGrid && "border",
+        isGrid && "border border-border-light",
       ]}>
       {icon && (
         <div class="bg-primary/10 group-hover:bg-primary mr-6 flex size-18 shrink-0 items-center justify-center rounded-2xl transition-all duration-300">

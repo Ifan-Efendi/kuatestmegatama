@@ -1,11 +1,11 @@
 # Site Configuration
 [site]
   title            = "PT. Kuatest Mega Tama" # Shared title for SEO and OpenGraph
-  description      = "Mitra Terpercaya Sekaligus Vendor Pengadaan Alat Teknik Sipil Meliputi Alat Uji Tanah, Beton, Aspal, Batuan, Semen, dan Alat Laboratorium Umum." # Shared description for SEO and OpenGraph
-  tagline          = "Mitra Terpercaya Sekaligus Vendor Pengadaan Alat Teknik Sipil."
+  description      = "Mitra sekaligus vendor terpercaya pengadaan alat laboratorium teknik sipil." # Shared description for SEO and OpenGraph
+  tagline          = "Mitra sekaligus vendor terpercaya pengadaan alat laboratorium teknik sipil."
   taglineSeparator = "" # default is " - " 
   baseUrl          = "" # Base URL for the site and used in OpenGraph meta tags.
-  logo             = "/images/favicons/KUATEST LOGO.png" # Path to the site's logo
+  logo             = "/images/favicons/KUATEST LOGO NAVY.png" # Path to the site's logo
   logoAlternate    = "" # Path to the site's logo
   logoText         = "KUATEST" # Text displayed next to the logo
   logoWidth        = "auto" # Width of the logo
@@ -18,7 +18,7 @@
   # Add your site logo in image path below and open your terminal and run "npm run generate-favicons" to generate favicons for different devices and platform (https://realfavicongenerator.net/checker)
   [site.favicon]
     path  = "/images/favicons" # favicon images path (No need to change it)
-    image = "/images/favicons/KUATEST LOGO.png" # Add your site logo path here and follow upper instruction
+    image = "/images/favicons/KUATEST LOGO NAVY.png" # Add your site logo path here and follow upper instruction
 
 
 # SEO Metadata
@@ -131,7 +131,7 @@
   # Update social links in `src/config/social.json`
   [settings.headerOffcanvas]
     enable      = true
-    logo        = ""
+    logo        = "/images/favicons/KUATEST LOGO.png" # White logo for the navy offcanvas panel
     description = "" # Check src/i18n/en.json and src/i18n/fr.json for changing the description in different languages or directly add value here if you are not using internationalization feature. This is also used in footer of personal-portfolio homepage
 
     # Call To Action Button

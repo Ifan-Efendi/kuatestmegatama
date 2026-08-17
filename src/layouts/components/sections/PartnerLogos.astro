@@ -1,0 +1,78 @@
+---
+import Marquee from "@/components/widgets/Marquee.astro";
+import OptimizedImage from "@/components/utilities/OptimizedImage.astro";
+import { markdownify } from "@/lib/utils/textConverter";
+
+interface PartnerLogo {
+  name: string;
+  image: string;
+}
+
+interface Props {
+  title?: string;
+  logos?: PartnerLogo[];
+  hasSectionBackground?: boolean;
+  hasSectionSpacing?: boolean;
+}
+
+const {
+  title = "Mitra & Perusahaan Kami",
+  logos = [],
+  hasSectionBackground = true,
+  hasSectionSpacing = true,
+} = Astro.props;
+
+if (!logos.length) {
+  return null;
+}
+
+const marqueeLogos =
+  logos.length > 3 ? [...logos, ...logos] : Array.from({ length: 3 }, () => logos).flat();
+---
+
+<section class:list={["overflow-hidden", !hasSectionSpacing && "pt-0"]}>
+  <div
+    class:list={[
+      hasSectionBackground && "section-spacing-vertical bg-theme-light",
+    ]}>
+    <div class="space-y-12">
+      {
+        title && (
+          <h2
+            class="mx-auto text-center"
+            data-scroll-reveal="blur-up"
+            set:html={markdownify(title)}
+          />
+        )
+      }
+
+      <div class="overflow-hidden" data-scroll-reveal="blur-up">
+        <Marquee
+          elements={marqueeLogos.length}
+          animationElements={logos.length}
+          elementWidth="22rem"
+          elementWidthResponsive="18rem"
+          elementWidthAuto={false}
+          pauseOnHover={true}
+          reverse=""
+          duration="28s"
+          fullWidth={true}
+          class="items-stretch">
+          {marqueeLogos.map((logo) => (
+            <div class="min-w-(--marquee-element-width-responsive) px-3 md:min-w-(--marquee-element-width)">
+              <article class="border-border-light shadow-card flex h-95 flex-col items-center justify-center overflow-hidden rounded-2xl border bg-white p-8 text-center">
+                <OptimizedImage
+                  src={logo.image}
+                  alt={logo.name}
+                  loading="lazy"
+                  class="max-h-44 w-auto max-w-full object-contain"
+                />
+                <h3 class="text-dark mt-6 text-xl font-semibold">{logo.name}</h3>
+              </article>
+            </div>
+          ))}
+        </Marquee>
+      </div>
+    </div>
+  </div>
+</section>

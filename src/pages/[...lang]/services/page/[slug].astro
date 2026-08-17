@@ -1,9 +1,8 @@
 ---
 import Base from "@/layouts/Base.astro";
 import { getCollectionCTM } from "@/lib/contentParser.astro";
-import { getEntryCTM } from "@/lib/contentParser.astro";
 import PageHeader from "@/components/widgets/PageHeader.astro";
-import ProductSidebar from "@/components/widgets/ProductSidebar.astro";
+import ProductToolbar from "@/components/widgets/ProductSidebar.astro";
 import TeamCard from "@/components/cards/TeamCard.astro";
 import Pagination from "@/components/widgets/Pagination.astro";
 import { supportedLanguages } from "@/lib/utils/i18nUtils.ts";
@@ -16,8 +15,7 @@ export async function getStaticPaths() {
         config.settings.multilingual;
 
       const members = await getCollectionCTM("team", lang.languageCode);
-      const productPerPage =
-        Number(config.settings.pagination) || 8;
+      const productPerPage = Number(config.settings.pagination) || 8;
       const totalPages = Math.ceil(members.length / productPerPage);
       const paths = [];
 
@@ -57,27 +55,107 @@ const slicedMembers = members.slice(indexOfFirst, indexOfLast);
 const totalPages = Math.ceil(members.length / productPerPage);
 ---
 
-<Base title="Our Product" metaDescription="Produk alat-alat sipil PT. Kuatest Mega Tama" fitToScreen={false}>
+<Base title="Produk" metaDescription="Produk alat-alat sipil PT. Kuatest Mega Tama" fitToScreen={false}>
   <PageHeader
     content={{
-      title: "Our Product",
+      title: "Produk",
       segmentLabels: { services: "Produk" },
     }}
   />
   <section>
     <div class="container">
-      <div class="grid grid-cols-1 gap-y-16 lg:grid-cols-12 lg:items-start lg:gap-x-8">
-        <div class="order-1 lg:col-span-8 lg:order-2">
-          <h2 class="text-center mb-10">Our Product Behind The Studio</h2>
-          <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" id="product-grid">
-            {slicedMembers.map((item, index) => (
-              <TeamCard content={item} />
-            ))}
-          </div>
-          <Pagination collection="services" currentPage={currentPage} totalPages={totalPages} />
-        </div>
-        <ProductSidebar />
+      <ProductToolbar />
+
+      <div class="mt-8 flex flex-wrap items-center justify-between gap-3">
+        <p class="text-text-default text-sm md:text-base">
+          Menampilkan <span class="font-semibold text-dark" data-product-count>{slicedMembers.length}</span> produk
+        </p>
+        <button
+          type="button"
+          id="product-clear-filter"
+          class="text-primary hidden items-center gap-1.5 text-sm font-semibold hover:underline">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true">
+            <path d="M18 6 6 18M6 6l12 12"></path>
+          </svg>
+          Hapus Filter
+        </button>
       </div>
+
+      <div
+        class="mt-6 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4"
+        id="product-grid">
+        {slicedMembers.map((item) => (
+          <TeamCard content={item} class="h-full" />
+        ))}
+      </div>
+
+      <Pagination collection="services" currentPage={currentPage} totalPages={totalPages} />
     </div>
   </section>
 </Base>
+
+<script>
+  const grid = document.getElementById("product-grid");
+  const countEl = document.querySelector("[data-product-count]");
+  const clearBtn = document.getElementById("product-clear-filter");
+  const categoryContainer = document.getElementById("product-categories");
+  const searchInput = document.querySelector<HTMLInputElement>(
+    "#product-search [name='search']",
+  );
+
+  const activeCategory = () =>
+    categoryContainer?.querySelector<HTMLElement>(".cat-chip.is-active")
+      ?.dataset.category ?? "";
+
+  const render = () => {
+    const category = activeCategory();
+    const term = searchInput?.value.trim().toLowerCase() ?? "";
+    let visible = 0;
+
+    grid?.querySelectorAll<HTMLElement>(".product-team-card").forEach((card) => {
+      const categories = (card.dataset.productCategories || "")
+        .split(",")
+        .map((c) => c.trim());
+      const title =
+        card
+          .querySelector("[data-product-title]")
+          ?.textContent?.toLowerCase() || "";
+
+      const matchesCategory = !category || categories.includes(category);
+      const matchesSearch = !term || title.includes(term);
+      const show = matchesCategory && matchesSearch;
+
+      card.classList.toggle("hidden", !show);
+      if (show) visible += 1;
+    });
+
+    if (countEl) countEl.textContent = String(visible);
+
+    const hasFilter = Boolean(category || term);
+    clearBtn?.classList.toggle("hidden", !hasFilter);
+    clearBtn?.classList.toggle("inline-flex", hasFilter);
+  };
+
+  document.addEventListener("product-filter:change", render);
+
+  clearBtn?.addEventListener("click", () => {
+    if (searchInput) searchInput.value = "";
+    categoryContainer
+      ?.querySelectorAll<HTMLElement>(".cat-chip")
+      .forEach((chip) => {
+        chip.classList.toggle("is-active", chip.dataset.category === "");
+      });
+    render();
+  });
+
+  render();
+</script>

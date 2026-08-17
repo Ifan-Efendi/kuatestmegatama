@@ -1,0 +1,106 @@
+---
+import type { z } from "astro/zod";
+import type { Section } from "@/types";
+import { getEntryCTM } from "@/lib/contentParser.astro";
+import overrideObjects from "@/lib/utils/overrideObjects.ts";
+import { markdownify } from "@/lib/utils/textConverter";
+import OptimizedImage from "@/components/utilities/OptimizedImage.astro";
+import DynamicIcon from "@/helpers/DynamicIcon.astro";
+import type { gallerySectionSchema } from "@/sections.schema";
+
+// Type for this section data
+type galleryInterface = Section & z.infer<typeof gallerySectionSchema>;
+
+type Props = {
+  content?: galleryInterface;
+  hasSectionSpacing?: boolean;
+};
+
+// Fetching the default content for the this section
+let defaultContent = (
+  await getEntryCTM("sections", "gallery-section", Astro.currentLocale)
+)?.data as galleryInterface;
+
+// Merges custom content overrides (e.g., just a title) with defaultContent fallbacks. Enables easy section reuse across pages with partial data changes.
+let actualContent = overrideObjects(
+  { ...defaultContent },
+  Astro.props.content || {},
+) as galleryInterface;
+
+// Extracting required values from 'content' object
+let { enable = true, title, description, photos = [] } =
+  actualContent as galleryInterface;
+
+const { hasSectionSpacing = true } = Astro.props;
+
+if (!enable) {
+  return null;
+}
+---
+
+<section class:list={[!hasSectionSpacing && "pt-0"]}>
+  <div class="container space-y-10 md:space-y-12">
+    {
+      (title || description) && (
+        <div
+          class="mx-auto max-w-2xl space-y-4 text-center"
+          data-scroll-reveal="blur-up">
+          {title && <h2 set:html={markdownify(title)} />}
+          {description && (
+            <p set:html={markdownify(description, true)} />
+          )}
+        </div>
+      )
+    }
+
+    {
+      photos.length > 0 ? (
+        <div class="columns-2 gap-4 md:columns-3 md:gap-6">
+          {
+            photos.map((photo, index) => (
+              <figure
+                data-scroll-reveal="zoom-in"
+                data-scroll-reveal-delay={index * 60}
+                class="group relative mb-4 break-inside-avoid overflow-hidden rounded-2xl md:mb-6">
+                <OptimizedImage
+                  src={photo.image}
+                  alt={photo.caption || title || "Galeri"}
+                  class="w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+
+                {photo.tag && (
+                  <span class="text-dark absolute top-3 left-3 rounded-md bg-white/90 px-2.5 py-1 text-xs font-semibold">
+                    {photo.tag}
+                  </span>
+                )}
+
+                {photo.caption && (
+                  <figcaption class="absolute inset-x-0 bottom-0 bg-linear-to-t from-dark/80 to-transparent p-4 pt-12 text-sm text-white transition duration-300 md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
+                    {photo.caption}
+                  </figcaption>
+                )}
+              </figure>
+            ))
+          }
+        </div>
+      ) : (
+        <div
+          class="border-border-light flex flex-col items-center gap-4 rounded-2xl border border-dashed px-6 py-16 text-center md:py-24"
+          data-scroll-reveal="blur-up">
+          <span class="bg-theme-light border-border-light text-text-default flex size-14 items-center justify-center rounded-xl border">
+            <DynamicIcon name="Camera" class="size-7" />
+          </span>
+          <div class="space-y-1.5">
+            <p class="text-dark text-lg font-semibold">
+              Galeri sedang dipersiapkan
+            </p>
+            <p class="text-text-default mx-auto max-w-md text-sm md:text-base">
+              Dokumentasi lapangan dan pengiriman akan segera ditambahkan di
+              halaman ini.
+            </p>
+          </div>
+        </div>
+      )
+    }
+  </div>
+</section>

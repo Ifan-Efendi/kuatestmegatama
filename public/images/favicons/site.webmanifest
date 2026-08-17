@@ -1,18 +1,12 @@
 {
-  "name": "Techlo",
-  "short_name": "Techlo",
+  "name": "PT. Kuatest Mega Tama",
+  "short_name": "KUATEST",
   "icons": [
     {
-      "src": "/images/favicons/web-app-manifest-192x192.png",
-      "sizes": "192x192",
+      "src": "/images/favicons/KUATEST LOGO NAVY.png",
+      "sizes": "1484x1428",
       "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "/images/favicons/web-app-manifest-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any"
     }
   ],
   "theme_color": "#ffffff",
